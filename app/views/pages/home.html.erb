@@ -1,0 +1,15 @@
+
+<% if @current_user.present? %>
+<h1> Welcome <% if ( session[:newuser] == false ) %>back<% end %> <%= @current_user.email %></h1>
+    <% if @current_user.admin? %>
+    <br><%= link_to 'View All Dogs', dogs_path %>
+    <% end %>
+    <% if @current_user.dogs.present? %>
+        <br><%= link_to 'View All My Dogs', dogs_path %>
+        <br><%= link_to 'Register New Dog', new_dog_path %>
+    <% else %>
+        <p>Please register your dog to continue using the site.</p>
+        <br><%= link_to 'Register My Dog', new_dog_path %>
+    <% end %>
+    <br><%= link_to 'Update My Profile', new_dog_path %>
+<% end %>

@@ -1,0 +1,27 @@
+
+
+rails db:create
+rails generate model Song title:text artist_id:integer album_id:integer
+rails db:migrate
+rails generate model Artist name:text image:text
+rails db:migrate
+rails generate model Album title:text image:text
+rails db:migrate
+rails generate model Genre name:text
+rails db:migrate
+rails generate model Mixtape title:text user_id:integer
+rails db:migrate
+rails generate model User email:text 
+rails db:migrate
+rails generate migration create_genres_songs genre_id:integer song_id:integer
+rails db:migrate
+rails generate migration create_mixtapes_songs mixtape_id:integer song_id:integer
+rails db:migrate
+rails db:seed
+rails generate migration AddPasswordDigestToUsers password_digest:text
+rails db:migrate
+rails generate controller Pages home
+rails generate controller Session new
+rails generate controller Mixtapes new
+rails generate migration add_admin_to_users admin:boolean
+rails db:migrate

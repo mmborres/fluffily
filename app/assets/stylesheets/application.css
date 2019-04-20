@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+ .container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.thumb {
+    max-height: 10em;
+}
+
+.feature {
+    max-width: 100%;
+}

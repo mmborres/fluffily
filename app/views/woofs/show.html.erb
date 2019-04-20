@@ -1,0 +1,9 @@
+<h1>Want to Woof-up with <%= @dog.name %>?</h1>
+
+<%if @dog.image.present? %><%= image_tag @dog.image, :class => 'feature' %><% end %>
+
+<br>Details
+
+
+<%= link_to 'Want to Woof-up?', "/woofs/#{@request_id}/#{@dog.id}/requestpage" %>
+

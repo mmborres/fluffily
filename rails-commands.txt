@@ -1,0 +1,87 @@
+rails new tunr -T --skip-git --database=postgresql
+
+cd tunr
+
+atom .
+
+rails db:create
+
+rails generate migration model Song title:text artist_id:integer album_id:integer
+
+rails generate migration model Song title:text artist_id:integer album_id:integer
+
+spring stop
+
+rails generate migration model Song title:text artist_id:integer album_id:integer
+
+rails generate migration Song title:text artist_id:integer album_id:integer
+
+rails generate model Song title:text artist_id:integer album_id:integer
+
+rails db:migrate
+
+annotate
+
+rails generate model Artist name:text image:text
+
+rails db:migrate
+
+annotate
+
+rails generate model Album title:text image:text
+
+rails db:migrate
+
+annotate
+
+rails generate model Genre name:text
+
+annotate
+
+rails generate model Mixtape title:text user_id:integer
+
+rails db:migrate annotate
+
+rails generate model User email:text
+
+rails db:migrate
+
+annotate
+
+rails generate model Artist name:text image:text
+
+rails db:migrate
+
+annotate
+
+rails generate model Album title:text image:text
+
+rails db:migrate
+
+rails generate model Genre name:text
+
+annotate
+
+rails generate model Mixtape title:text user_id:integer
+
+rails db:migrate
+
+annotate
+
+rails generate model User email:text
+
+rails db:migrate
+
+annotate
+
+rails generate migration create_genres_songs genre_id:integer song_id:integer
+
+rails db:migrate
+
+rails generate migration create_mixtapes_songs mixtape_id:integer song_id:integer
+
+rails db:migrate
+
+history
+
+rails db:seed

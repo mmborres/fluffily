@@ -1,0 +1,13 @@
+<h1>Ready to Woof?</h1>
+
+<table>
+    <% @matches.each do |d| %>
+    <tr>
+    <td><%= link_to d.name, "/woofs/#{@request_id}/#{d.id}/show" %></td>
+    <td><%if d.image.present? %><%= link_to image_tag(d.image, :class => 'thumb'), "/woofs/#{@request_id}/#{d.id}/show" %><% end %></td>
+    <td>Status: <%= link_to d.status, "/woofs/#{@request_id}/#{d.id}/show" %></td>
+    </tr>
+    <% end %>
+</table>
+
+<br> Handle if no matches, link to update preferences
