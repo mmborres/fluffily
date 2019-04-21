@@ -14,5 +14,5 @@ More Details
 
 <div class="controls">
     <%= link_to 'Edit Dog', edit_dog_path(@dog.id) %>
-    <% if !(@showmatches) %><%= link_to 'Delete Dog', "/dogs/#{params[:id]}/delete" %><% end %>
+    <% if @showmatches %><%= link_to 'Delete Dog', "/dogs/#{params[:id]}/delete" %><% end %>
 </div>

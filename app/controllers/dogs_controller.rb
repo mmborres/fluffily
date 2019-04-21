@@ -9,7 +9,7 @@ class DogsController < ApplicationController
     end
 
     @mydogs = @current_user.dogs 
-binding.pry
+#binding.pry
   end
 
   def new
@@ -17,7 +17,7 @@ binding.pry
     @dog.setbool
     @booleanMale = true
     @booleanFemalepref_sex = true
-binding.pry
+#binding.pry
   end
 
   def show
@@ -29,7 +29,7 @@ binding.pry
         @showmatches = false
       end
     end
-binding.pry
+#binding.pry
   end
 
   def create
@@ -73,7 +73,7 @@ binding.pry
   def update
     dog = Dog.find params[:id]
     dog.update dog_params
-binding.pry
+#binding.pry
     redirect_to dog_path(dog.id)
   end
 

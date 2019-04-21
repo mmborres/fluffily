@@ -2,7 +2,7 @@
 
 <%if @dog.image.present? %><%= image_tag @dog.image, :class => 'feature' %><% end %>
 
-<br>Details
+<br>Details<br>
 
 
 <%= link_to 'Want to Woof-up?', "/woofs/#{@request_id}/#{@dog.id}/requestpage" %>

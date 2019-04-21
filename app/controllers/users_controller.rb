@@ -10,6 +10,19 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    @user = User.find params[:id]
+binding.pry
+  end
+
+  def update
+    user = User.find params[:id]
+    user.update user_params
+#binding.pry
+    redirect_to root_path
+  end
+
+
   def create
     #if params[:user][:email].blank?
     #  redirect_to error_path

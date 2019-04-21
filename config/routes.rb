@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to => 'pages#home'
-  resources :users, :only => [:new, :create, :index]
+  resources :users, :only => [:new, :create, :index, :edit, :update]
   resources :dogs
   #, :only => [:new, :create, :index, :edit, :show]
 
@@ -20,6 +20,11 @@ Rails.application.routes.draw do
   get '/woofs/:id/:id2/requestpage' => 'woofs#requestpage'
   get '/woofs/:id/:id2/create' => 'woofs#create'
 
-  
+  get '/woofupdates/woofupdate' => 'woofupdates#woofupdate'
+  get '/woofupdates/setupwoofup' => 'woofupdates#setupwoofup'
+
+  get '/breedappts/breedappt' => 'breedappts#breedappt'
+
+  get '/dogwalkdates/dogwalkdate' => 'dogwalkdates#dogwalkdate'
 
 end
