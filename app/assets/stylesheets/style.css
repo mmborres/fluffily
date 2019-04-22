@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat+Brush');
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+@import url('https://fonts.googleapis.com/css?family=Irish+Grover');
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif|Raleway:400,500,600,700');
+
+body {
+  /*https://media.giphy.com/media/d3MKb2hCZaNH63zq/giphy.gif*/
+  background-image: url("https://previews.123rf.com/images/damedeeso/damedeeso1407/damedeeso140700058/30507565-couple-of-dogs-in-love-very-close-together-lying-on-grass-in-the-park-with-sunglasses-chilling-out.jpg");
+  
+  /* Image is centered vertically and horizontally at all times */
+  background-position: top center;
+  
+  /* Image doesn't repeat */
+  background-repeat: no-repeat;
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+  background-attachment: fixed;
+  
+  /* This is what makes the background image rescale based on its container's size */
+  background-size: cover;
+}
+
+h1, h2 {
+  color: aliceblue;
+}
+
+label {
+  color: aliceblue;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+nav a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+div a {
+padding-left: 10px;
+padding-right: 10px;
+}
+
+
+a {
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+img {
+  width: 400px;
+  height: 400px;
+
+  max-width: 100%;
+  border: 5px solid #00bcd4;
+}
+
+button {
+background-color: #2a99a5;
+color: white;
+font-family: 'Raleway', sans-serif;
+font-size: 15px;
+border-radius: 0.5em;
+}
+
+p {
+  text-align: center;
+}
+
+table {
+  align-content: center;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.ptabitem {
+padding-left: 200px;
+}
+
+.tabitem {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.container {
+vertical-align: center;
+text-align: center;
+max-width: 960px; /* common value, responsive design */
+margin: 0 auto;
+
+padding: 1em; /*space inside the box*/
+ /*space outside the box*/
+border-bottom-left-radius: 1em;
+border-bottom-right-radius: 1em;
+background-color: #033a1ccf;
+}
+
+.tableindex
+{
+  width:30%;
+}
+.tdindex
+{
+  height:40px;
+  }
+  
+.msgTable {
+  border-color: black;
+  border-style: double;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.thumb {
+  max-height: 10em;
+}
+
+.feature {
+  max-width: 100%;
+}
+
+
+.pLabel {
+background-color: #b2ebf2;
+border-bottom-left-radius: 1em;
+border-bottom-right-radius: 1em;
+}

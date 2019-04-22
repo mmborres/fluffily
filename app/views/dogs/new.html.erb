@@ -15,10 +15,10 @@
     <%= label_tag('dog[sex]', 'Female' ) %>
 
     <br><br><%= f.label :breed %>
-    <br><%= f.text_field :breed %>
+    <br><%= f.text_field :breed, :required => true %>
 
     <br><br><%= f.label :color %>
-    <br><%= f.text_field :color %>
+    <br><%= f.text_field :color, :required => true %>
 
     <br><br><%= f.label :image %>
     <br><%= f.url_field :image, :required => true %>
@@ -36,14 +36,18 @@
     <%= label_tag('dog[pref_sex]', 'Female' ) %>
 
     <br><br><%= f.label :pref_breed %>
-    <br><%= f.text_field :pref_breed, :placeholder => 'Any' %>
+    <br><%= f.text_field :pref_breed, :placeholder => 'Any', :value => 'Any' %>
 
     <br><br><%= f.label :pref_color %>
-    <br><%= f.text_field :pref_color, :placeholder => 'Any' %>
+    <br><%= f.text_field :pref_color, :placeholder => 'Any', :value => 'Any' %>
 
     <br><br><%= f.label :pref_location %>
-    <br><%= f.text_field :pref_location, :placeholder => 'Any' %>
+    <br><%= f.text_field :pref_location, :placeholder => 'Any', :value => 'Any' %>
 
     <br><br>
     <%= f.submit "Register Dog", :class => 'button' %>
 <% end %>
+
+
+<br><br>
+<%= link_to 'Back to My Dogs', dogs_path %>

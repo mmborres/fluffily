@@ -10,6 +10,8 @@
   </head>
 
   <body>
+    <div class="container">
+    
     <%= link_to 'Home', root_path %>
     <% if @current_user.present? %>
       <% if @current_user.admin? %>
@@ -21,6 +23,8 @@
       <%= link_to 'Sign In', login_path %>
     <% end %>
 
+  
     <%= yield %>
+  </div>
   </body>
 </html>

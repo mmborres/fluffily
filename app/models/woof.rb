@@ -12,26 +12,30 @@
 
 class Woof < ApplicationRecord
     has_many :messages
+    has_many :dogwalkdates
+    has_many :breedappts
+    has_many :woofupdates
 
     public
     def getMatches requestor_id
     #get the dog first
-    dog = ExecuteSql.run "SELECT * FROM dogs WHERE id=#{requestor_id}", mode: :raw
+    dog = Dog.find requestor_id
+    #ExecuteSql.run "SELECT * FROM dogs WHERE id=#{requestor_id}", mode: :raw
     #get the dog's preferences
-    pref_sex = dog[0][12]
-    pref_breed = dog[0][13]
-    pref_color = dog[0][14]
-    pref_location = dog[0][15]
+    pref_sex = dog.pref_sex #dog[0][12]
+    pref_breed = dog.pref_breed #dog[0][13]
+    pref_color = dog.pref_color #dog[0][14]
+    pref_location = dog.pref_location #dog[0][15]
+#binding.pry
+    selectstatement = "SELECT * FROM dogs WHERE id<>#{requestor_id} AND user_id<>#{dog.user_id} AND upper(sex)='#{pref_sex.upcase}' "
 
-    selectstatement = "SELECT * FROM dogs WHERE id<>#{requestor_id} AND upper(sex)='#{pref_sex.upcase}' "
-
-    if !(pref_breed.upcase.include? "ANY")
+    if ( !(pref_breed.upcase.include? "ANY") && !(pref_breed.empty?) )
         selectstatement += "AND upper(breed)='#{pref_breed.upcase}' "
     end
-    if !(pref_color.upcase.include? "ANY")
+    if ( !(pref_color.upcase.include? "ANY") && !(pref_color.empty?) )
         selectstatement += "AND upper(color)='#{pref_color.upcase}' "
     end
-    if !(pref_location.upcase.include? "ANY")
+    if ( !(pref_location.upcase.include? "ANY") && !(pref_location.empty?) )
         selectstatement += "AND upper(location)='#{pref_location.upcase}' "
     end
 #binding.pry
@@ -44,7 +48,16 @@ class Woof < ApplicationRecord
         until i == matchedIDs.length
 #binding.pry
             id = matchedIDs[i][0]
-            matchedDogs[i] = Dog.find id
+            tempDog = Dog.find id
+
+            if ( tempDog.status == "Available" && (
+                (tempDog.pref_sex.upcase == dog.sex.upcase) || (tempDog.pref_sex.upcase.include? "ANY") ||
+                (tempDog.pref_breed.upcase == dog.breed.upcase) || (tempDog.pref_breed.upcase.include? "ANY") ||
+                (tempDog.pref_color.upcase == dog.color.upcase) || (tempDog.pref_color.upcase.include? "ANY") ||
+                (tempDog.pref_location.upcase == dog.location.upcase) || (tempDog.pref_color.location.include? "ANY")
+            ) )
+                matchedDogs.append tempDog
+            end
 #binding.pry
             i += 1;
         end
@@ -53,16 +66,33 @@ class Woof < ApplicationRecord
     return matchedDogs
     end
 
+    public 
+    def createInitialWoof (request_id, accept_id, messageText)
+        woof = Woof.new
+        woof.dog_request_id = request_id
+        woof.dog_accept_id = accept_id
+        woof.status = "Pending"
+#binding.pry
+        woof.save
+#binding.pry
+        message = Message.new
+        message.sender_id = request_id #initiator
+        message.sender_name = message.getName message.sender_id
+        message.message_text = messageText
+        woof.messages << message
+        message.save
+#binding.pry
+        woof.updateStatusCreate request_id, accept_id
+    end
+
     public
     def updateStatusCreate (request_id, accept_id)
 #binding.pry
         request_dog = Dog.find request_id
         accept_dog = Dog.find accept_id
 
-        request_dog.status = "Woof-up Request Sent"
-        accept_dog.status = "Woof-up Pending Approval"
-        request_dog.save
-        accept_dog.save
+        request_dog.update(:status => "Woof-up Request Sent")
+        accept_dog.update(:status => "Woof-up Pending Approval")
     end
 
     public
@@ -71,47 +101,56 @@ class Woof < ApplicationRecord
         request_dog = Dog.find wuf.dog_request_id
         accept_dog = Dog.find wuf.dog_accept_id
 
-        request_dog.status = "Woof-up Expired"
-        accept_dog.status = "Woof-up Expired"
-        request_dog.save
-        accept_dog.save
-        #wuf.status = "Woof-up Expired"
+        request_dog.update(:status => "Woof-up Expired")
+        accept_dog.update(:status => "Woof-up Expired")
     end
 
     public
     def updateStatusDogwalkDateorBreakup wuf
         #set to "Dogwalk Date or Break-up"
-        wuf.status = "Dogwalk Date or Break-up"
+        wuf.update(:status => "Dogwalk Date or Break-up")
         request_dog = Dog.find wuf.dog_request_id
         accept_dog = Dog.find wuf.dog_accept_id
 
-        request_dog.status = "Dogwalk Date or Break-up"
-        accept_dog.status = "Dogwalk Date or Break-up"
-        request_dog.save
-        accept_dog.save
+        request_dog.update(:status => "Dogwalk Date or Break-up")
+        accept_dog.update(:status => "Dogwalk Date or Break-up")
     end
 
 
     public 
     def getWoof (id, currstatus)
         wuf = Woof.find_by(dog_accept_id: id, status: currstatus)
-binding.pry
+#binding.pry
         if ( (wuf == nil) || (wuf == "") )
             wuf = Woof.find_by(dog_request_id: id, status: currstatus)
         end
-binding.pry
+#binding.pry
+        return wuf
+    end
+
+
+    public 
+    def getWoofupdate id
+        wuf = Woofupdate.find_by(woof_id: id)
         return wuf
     end
 
     public 
     def getWoofPartnerDog (id, wuf)
         partnerDog = nil
-        if id == wuf.dog_accept_id
+        if id == wuf.dog_accept_id.to_s
             partnerDog = Dog.find wuf.dog_request_id
         else
             partnerDog = Dog.find wuf.dog_accept_id
         end
+#binding.pry
         return partnerDog
+    end
+
+    public
+    def getDogImage id 
+        dog = Dog.find id
+        return dog.image
     end
 
     public
@@ -123,6 +162,7 @@ binding.pry
         pageTitle = ""
         caption = ""
         partnerDog_id = 0
+        woofupdateconfirmed = false
 
         #Find Woof-up
         #  dog_request_id :integer
@@ -130,11 +170,11 @@ binding.pry
 
         #message IS recent 2 messages only, link to new page - view whole messages go to new page
 #binding.pry        
-        if (dog.status.include? "Woof-up") && !(dog.status.include? "Set")
+        if (dog.status.include? "Woof-up") && ( (dog.status.include? "Approval") || (dog.status.include? "Request") )
             if dog.status.include? "Approval"
                 #show page with Approval button and next page is to setup Woof-up date
                 #message
-                wuf = Woof.find_by(dog_accept_id: id)
+                wuf = getWoof id, "Pending" #Woof.find_by(dog_accept_id: id)
                 requestdog = Dog.find wuf.dog_request_id
                 pageTitle = currstatus
                 caption = "#{requestdog.name.capitalize} is waiting on your approval."
@@ -144,7 +184,7 @@ binding.pry
             else
                 #show page with details, no links -- coz approval pending
                 #message
-                wuf = Woof.find_by(dog_request_id: id)
+                wuf = getWoof id, "Pending" #Woof.find_by(dog_request_id: id)
                 acceptdog = Dog.find wuf.dog_accept_id
                 pageTitle = currstatus
                 caption = "You are waiting on #{acceptdog.name.capitalize}'s approval."
@@ -154,7 +194,7 @@ binding.pry
             end
         end
 
-binding.pry
+#binding.pry
         #beyond this stage, both have same status
 
         currstatus = "Set Woof-up"
@@ -165,8 +205,9 @@ binding.pry
             pageTitle = currstatus
             caption = "Enter details for the Woof-up."
             messageArray = wuf.messages[0..1]
-            renderPage = "/woofupdates/setupwoofup"
+            renderPage = "/woofupdates/woof"
             partnerDog_id = (getWoofPartnerDog id, wuf).id
+#binding.pry
         end
 
         currstatus = "Woof-up Reminder"
@@ -178,19 +219,23 @@ binding.pry
             #else
                 #show page to update woof-up details
                 #message
-
+#binding.pry
             wuf = getWoof id, currstatus
-            expired = DateTime.now > wuf.updated_at
+#binding.pry
+            wufup = Woofupdate.find_by(woof_id: wuf.id)
+#binding.pry
+            expired = DateTime.now.to_date > wufup.woofdate
+#binding.pry
             partnerDog = getWoofPartnerDog id, wuf
             messageArray = wuf.messages[0..1]
             partnerDog_id = partnerDog.id
 
             if expired
                 updateStatusWoofupExpired wuf
-                wuf.status = "Woof-up Expired"
+                #wuf.status = "Woof-up Expired"
                 pageTitle = "Post Woof-up Options"
-                caption = "#{partnerDog.name.capitalize} is available for:"
-                wuf.save
+                caption = "Your partner dog, #{partnerDog.name.capitalize}, is available for:"
+                wuf.update(:status => "Woof-up Expired")
                 renderPage = "/breedappts/breedappt"                
             else
                 pageTitle = currstatus
@@ -198,7 +243,7 @@ binding.pry
                 renderPage = "/woofupdates/setupwoofup" 
             end
         end
-
+#binding.pry
         currstatus = "Woof-up Expired"
         if dog.status.include? currstatus
             #show page with options to set up Breeding Appointment, Dogwalk Date or Break-up (links)
@@ -206,11 +251,18 @@ binding.pry
             #message
             wuf = getWoof id, currstatus
             pageTitle = "Post Woof-up Options"
-            caption = "#{partnerDog.name.capitalize} is available for:"
             partnerDog = getWoofPartnerDog id, wuf
+            caption = "Your partner dog, #{partnerDog.name.capitalize}, is available for:"
             messageArray = wuf.messages[0..1]
             partnerDog_id = partnerDog.id
-            renderPage = "/breedappts/breedappt"  
+
+            woofupdate = Woofupdate.find_by(woof_id: wuf.id)
+#binding.pry
+            if ( woofupdate.status.present? && !(woofupdate.status.empty?) && (woofupdate.status == "Confirmed") )
+                    woofupdateconfirmed = true
+            end
+#binding.pry
+            renderPage = "/breedappts/options"  
         end
 
         currstatus = "Breeding Appointment Reminder"
@@ -223,18 +275,20 @@ binding.pry
                 #message
 
             wuf = getWoof id, currstatus
-            expired = DateTime.now > wuf.updated_at
+            expired = false
+            #Date.now > wuf.woofdate
+            #DateTime.now.to_date > wuf.woofdate
             partnerDog = getWoofPartnerDog id, wuf
             messageArray = wuf.messages[0..1]
             partnerDog_id = partnerDog.id
 
             if expired
                 updateStatusDogwalkDateorBreakup wuf
-                wuf.status = "Dogwalk Date or Break-up"
+                #wuf.status = "Dogwalk Date or Break-up"
                 pageTitle = "More Woof-up Options"
-                caption = "#{partnerDog.name.capitalize} is available for:"
-                wuf.save
-                renderPage = "/dogwalkdates/dogwalkdate"                
+                caption = "Your partner dog, #{partnerDog.name.capitalize}, is available for:"
+                wuf.update(:status => "Dogwalk Date or Break-up")
+                renderPage = "/dogwalkdates/options"                
             else
                 pageTitle = currstatus
                 caption = "Please make sure to get in touch with #{partnerDog.name.capitalize}'s owner to push through with the breeding appointment."
@@ -274,10 +328,10 @@ binding.pry
 
             if expired
                 updateStatusDogwalkDateorBreakup wuf
-                wuf.status = "Dogwalk Date or Break-up"
+                #wuf.status = "Dogwalk Date or Break-up"
                 pageTitle = "More Woof-up Options"
-                caption = "#{partnerDog.name.capitalize} is available for:"
-                wuf.save
+                caption = "Your partner dog, #{partnerDog.name.capitalize}, is available for:"
+                wuf.update(:status => "Dogwalk Date or Break-up")
                 renderPage = "/dogwalkdates/dogwalkdate"                
             else
                 pageTitle = currstatus
@@ -299,19 +353,24 @@ binding.pry
             partnerDog = getWoofPartnerDog id, wuf
             messageArray = wuf.messages[0..1]
             partnerDog_id = partnerDog.id
-            caption = "#{partnerDog.name.capitalize} is available for:"
-            renderPage = "/dogwalkdates/dogwalkdate" 
+            caption = "Your partner dog, #{partnerDog.name.capitalize}, is available for:"
+            renderPage = "/dogwalkdates/options" 
         end
 
         #Note once 'Break-up' is chosen, STATUS back to 'Available'
-binding.pry
+#binding.pry
+        partnerDog_img = getDogImage partnerDog_id
+        
         return {
-            #:woof => wuf,
+            :woof_id => wuf.id,
             :msgArray => messageArray,
             :pageToRender => renderPage,
             :heading => pageTitle,
             :subheading => caption,
-            :partnerDog_id => partnerDog_id
+            :partnerDog_id => partnerDog_id,
+            :partnerDog_img => partnerDog_img,
+            :currentStatus => dog.status,
+            :woofupdateconfirmed => woofupdateconfirmed
         }
     end #method
 end #class

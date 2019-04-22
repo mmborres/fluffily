@@ -1,6 +1,7 @@
 
+<h1>Welcome to Fluffily Ever After:<br><i>A Dating App for Dogs</i></h1>
 <% if @current_user.present? %>
-<h1> Welcome <% if ( session[:newuser] == false ) %>back<% end %> <%= @current_user.email %></h1>
+<h2> Good to have you<% if ( session[:newuser] == false ) %> back<% end %>, <%= @current_user.email %></h2>
     <% if @current_user.admin? %>
     <br><%= link_to 'View All Dogs', dogs_path %>
     <% end %>
@@ -12,4 +13,7 @@
         <br><%= link_to 'Register My Dog', new_dog_path %>
     <% end %>
     <br><%= link_to 'Update My Profile', edit_user_path(@current_user.id) %>
+<% else %>
+<h2>Please sign up or sign in to use the site.</h2>
 <% end %>
+

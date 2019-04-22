@@ -21,10 +21,18 @@ Rails.application.routes.draw do
   get '/woofs/:id/:id2/create' => 'woofs#create'
 
   get '/woofupdates/woofupdate' => 'woofupdates#woofupdate'
-  get '/woofupdates/setupwoofup' => 'woofupdates#setupwoofup'
+  get '/woofupdates/:id/woof/:woofid' => 'woofupdates#woof'
+  get '/woofupdates/withdraw/:woofid' => 'woofupdates#withdraw'
+  get '/woofupdates/:id/edit/:woofid' => 'woofupdates#edit'
+  get '/woofupdates/:id/update/:woofid' => 'woofupdates#update'
+  get '/woofupdates/cancel/:woofid' => 'woofupdates#cancel'
+  get '/woofupdates/confirm/:woofid' => 'woofupdates#confirm'
+  get '/woofupdates/:id/setupwoofup/:woofid' => 'woofupdates#setupwoofup'
 
+  get '/breedappts/options' => 'breedappts#breedappt'
   get '/breedappts/breedappt' => 'breedappts#breedappt'
 
+  get '/dogwalkdates/options' => 'dogwalkdates#dogwalkdate'
   get '/dogwalkdates/dogwalkdate' => 'dogwalkdates#dogwalkdate'
 
 end

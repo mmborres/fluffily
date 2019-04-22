@@ -1,0 +1,18 @@
+<h1>Setup the First Woof-up Date</h1>
+
+<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
+
+<form action="/woofupdates/<%= @currentDog_id %>/setupwoofup/<%= @woof_id %>">
+  When?<br>
+  <input type="date" name="woofupdate[woofdate]" id="woofupdate[woofdate]">
+  <br>
+  Where?<br>
+  <input type="text" name="woofupdate[place]" id="woofupdate[place]">
+  <br>
+  Add Notes: (will be saved in the Messages)<br>
+  <br><br>
+  <input type="submit" value="Set it up!">
+</form> 
+
+<br><br>
+<%= link_to 'Back to My Dogs', dogs_path %>

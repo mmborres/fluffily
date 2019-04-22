@@ -1,3 +1,17 @@
 <h1><%= @heading %></h1>
 
 <%= @subheading %>
+
+<br>
+<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
+
+<!-- Woof up Reminder goes here, can edit woof-up -->
+
+<br>
+<%= link_to 'Edit Woof-up', "/woofupdates/#{@currentDog_id}/edit/#{@woof_id}" %>
+
+<%= link_to 'Cancel Woof-up', "/woofupdates/cancel/#{@woof_id}" %>
+
+<br><br>
+<%= link_to 'Back to My Dogs', dogs_path %>
+

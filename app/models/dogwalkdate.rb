@@ -14,4 +14,5 @@
 #
 
 class Dogwalkdate < ApplicationRecord
+    belongs_to :woof, :optional => true
 end

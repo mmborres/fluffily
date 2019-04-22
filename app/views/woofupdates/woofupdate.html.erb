@@ -1,3 +1,42 @@
 <h1><%= @heading %></h1>
 
-<%= @subheading %>
+<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
+
+<br>
+
+<h2><%= @subheading %></h2>
+
+
+<% if @currentStatus.include? "Pending" %><%= link_to "Approve?", "/woofupdates/#{@currentDog_id}/woof/#{@woof_id}" %><% end %>
+
+<br>
+
+
+<%= link_to "Withdraw Woof-up?", "/woofupdates/withdraw/#{@woof_id}" %>
+
+<br>
+
+
+<br><br>
+
+
+<table border=1>
+<% i = 0 %>
+Message Exchanges
+<tr>
+<td><b>From</b></td>
+<td><i>Message</i></td>
+</tr>
+<% until i == @msgArray.length %>
+<tr>
+<td><b><%= @msgArray[i][:sender_name] %></b></td>
+<td><i><%= @msgArray[i][:message_text] %></i></td>
+</tr>
+<% i += 1 %>
+<% end %>
+</table>
+
+<br>
+
+<br><br>
+<%= link_to 'Back to My Dogs', dogs_path %>

@@ -14,4 +14,5 @@
 #
 
 class Breedappt < ApplicationRecord
+    belongs_to :woof, :optional => true
 end
