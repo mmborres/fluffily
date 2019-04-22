@@ -24,7 +24,7 @@ class WoofupdatesController < ApplicationController
   def update 
     woofupdate = Woofupdate.find_by(woof_id: params[:woofid])
     woofupdate.updateWoofUp woofupdate, params
-#binding.pry
+binding.pry
     redirect_to dogs_path
   end
 
@@ -43,6 +43,7 @@ class WoofupdatesController < ApplicationController
   end
 
   def setupwoofup #from different route, take note
+binding.pry
     woofupdate = Woofupdate.create woofupdate_params
     woofupdate.update(:woof_id => params[:woofid])
     woofupdate.update(:dog_request_id => params[:id]) #initiator

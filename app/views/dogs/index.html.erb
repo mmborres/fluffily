@@ -5,7 +5,7 @@
     <tr>
     <td><%= link_to d.name, dog_path(d.id) %></td>
     <td><%if d.image.present? %><%= link_to image_tag(d.image, :class => 'thumb'), dog_path(d.id) %><% end %></td>
-    <td>Status:<br><%= link_to d.status, dog_path(d.id) %></td>
+    <td><span class="ptext">Status:</span><br><%= link_to d.status, dog_path(d.id) %></td>
     </tr>
     <% end %>
 </table>
@@ -17,7 +17,7 @@
     <tr>
     <td><%= link_to d.name, dog_path(d.id) %></td>
     <td><%if d.image.present? %><%= link_to image_tag(d.image, :class => 'thumb'), dog_path(d.id) %><% end %></td>
-    <td>Status:<br><%= link_to d.status, dog_path(d.id) %></td>
+    <td><span class="ptext">Status:</span><br><%= link_to d.status, dog_path(d.id) %></td>
     </tr>
     <% end %>
 </table>

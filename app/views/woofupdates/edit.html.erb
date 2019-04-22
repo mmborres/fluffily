@@ -1,15 +1,17 @@
 <h1>Update Woof-up Date</h1>
 
-<form action="/woofupdates/<%= @currentDog_id %>/update/<%= @woof_id %>">
-  When?<br>
+<form action="/woofupdates/<%= @currentDog_id %>/update/<%= @woof_id %>" class="pLabel">
+  <br>When?<br>
   <input type="date" name="woofupdate[woofdate]" id="woofupdate[woofdate]" value="<%if @woofupdate.woofdate.present? %><%=@woofupdate.woofdate%><% end %>">
-  <br>
+  <br><br>
   Where?<br>
   <input type="text" name="woofupdate[place]" id="woofupdate[place]" value="<%if @woofupdate.place.present? %><%=@woofupdate.place%><% end %>">
-  <br>
-  Add Notes: (will be saved in the Messages)<br>
   <br><br>
-  <input type="submit" value="Update Woof-up!">
+  Add Notes: (will be saved as Messages)<br>
+  <textarea rows = "5" cols = "78" name="message_text" id="message_text" placeholder="Hi, Please call me at this number if you wish: "></textarea>
+  <br><br>
+  <button>Update Woof-up</button>
+  <br>&nbsp;
 </form> 
 
 <br><br>

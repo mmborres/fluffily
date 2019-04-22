@@ -1,16 +1,29 @@
 <h1><%= @heading %></h1>
 
-<%= @subheading %>
+<h2><%= @subheading %></h2>
 
 <br>
 <%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
 
-<!-- Woof up Reminder goes here, can edit woof-up -->
-
+<p class="pLabel">
 <br>
+<b>WOOF-UP COMING UP!</b>
+<br>
+When: <%= @woofupdate_when %>
+<br>
+Where: <%= @woofupdate_where %>
+<br>&nbsp;
+</p>
+
+
+
 <%= link_to 'Edit Woof-up', "/woofupdates/#{@currentDog_id}/edit/#{@woof_id}" %>
 
 <%= link_to 'Cancel Woof-up', "/woofupdates/cancel/#{@woof_id}" %>
+
+<br><br>
+<%= link_to 'View or Send Messages', "/messages/#{@woof_id}/#{@currentDog_id}/message" %> 
+
 
 <br><br>
 <%= link_to 'Back to My Dogs', dogs_path %>

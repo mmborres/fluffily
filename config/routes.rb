@@ -35,4 +35,9 @@ Rails.application.routes.draw do
   get '/dogwalkdates/options' => 'dogwalkdates#dogwalkdate'
   get '/dogwalkdates/dogwalkdate' => 'dogwalkdates#dogwalkdate'
 
+  get '/messages/:woofid/:id/message' => 'messages#woofmessage'
+  get '/messages//message' => 'messages#woofmessage'
+  get '/messages/woofmessagesend' => 'messages#woofmessagesend'
+  post '/messages/woofmessagesend' => 'messages#woofmessagesend'
+
 end

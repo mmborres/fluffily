@@ -18,11 +18,13 @@ class DogsController < ApplicationController
   end
 
   def show
+binding.pry
     @showmatches = true
     @dog = Dog.find params[:id]
     if @dog.status.present?
       if @dog.status != "Available"
         @showmatches = false
+        @partnerDog = @dog.getPartnerDog @dog
       end
     end
   end

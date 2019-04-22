@@ -177,7 +177,11 @@ class Woof < ApplicationRecord
                 wuf = getWoof id, "Pending" #Woof.find_by(dog_accept_id: id)
                 requestdog = Dog.find wuf.dog_request_id
                 pageTitle = currstatus
-                caption = "#{requestdog.name.capitalize} is waiting on your approval."
+                rname = requestdog.name
+                if rname.chars.first != rname.chars.first.upcase
+                    rname = rname.capitalize
+                end
+                caption = "#{rname} is waiting on your approval."
                 messageArray = wuf.messages[0..1]
                 renderPage = "/woofupdates/woofupdate"
                 partnerDog_id = requestdog.id
@@ -187,7 +191,11 @@ class Woof < ApplicationRecord
                 wuf = getWoof id, "Pending" #Woof.find_by(dog_request_id: id)
                 acceptdog = Dog.find wuf.dog_accept_id
                 pageTitle = currstatus
-                caption = "You are waiting on #{acceptdog.name.capitalize}'s approval."
+                rname = acceptdog.name
+                if rname.chars.first != rname.chars.first.upcase
+                    rname = rname.capitalize
+                end
+                caption = "You are waiting on #{rname}'s approval."
                 messageArray = wuf.messages[0..1]
                 renderPage = "/woofupdates/woofupdate"
                 partnerDog_id = acceptdog.id
@@ -230,17 +238,24 @@ class Woof < ApplicationRecord
             messageArray = wuf.messages[0..1]
             partnerDog_id = partnerDog.id
 
+            rname = partnerDog.name
+            if rname.chars.first != rname.chars.first.upcase
+                rname = rname.capitalize
+            end
+
             if expired
                 updateStatusWoofupExpired wuf
                 #wuf.status = "Woof-up Expired"
                 pageTitle = "Post Woof-up Options"
-                caption = "Your partner dog, #{partnerDog.name.capitalize}, is available for:"
+                caption = "Your partner dog, #{rname}, is available for:"
                 wuf.update(:status => "Woof-up Expired")
                 renderPage = "/breedappts/breedappt"                
             else
                 pageTitle = currstatus
-                caption = "Please make sure to get in touch with #{partnerDog.name.capitalize}'s owner to push through with the woof-up."
+                caption = "Please make sure to get in touch with #{rname}'s owner to push through with the woof-up."
                 renderPage = "/woofupdates/setupwoofup" 
+                woofupdate_when = wufup.woofdate
+                woofupdate_where = wufup.place
             end
         end
 #binding.pry
@@ -252,7 +267,11 @@ class Woof < ApplicationRecord
             wuf = getWoof id, currstatus
             pageTitle = "Post Woof-up Options"
             partnerDog = getWoofPartnerDog id, wuf
-            caption = "Your partner dog, #{partnerDog.name.capitalize}, is available for:"
+            rname = partnerDog.name
+            if rname.chars.first != rname.chars.first.upcase
+                rname = rname.capitalize
+            end
+            caption = "Your partner dog, #{rname}, is available for:"
             messageArray = wuf.messages[0..1]
             partnerDog_id = partnerDog.id
 
@@ -282,16 +301,21 @@ class Woof < ApplicationRecord
             messageArray = wuf.messages[0..1]
             partnerDog_id = partnerDog.id
 
+            rname = partnerDog.name
+            if rname.chars.first != rname.chars.first.upcase
+                rname = rname.capitalize
+            end
+
             if expired
                 updateStatusDogwalkDateorBreakup wuf
                 #wuf.status = "Dogwalk Date or Break-up"
                 pageTitle = "More Woof-up Options"
-                caption = "Your partner dog, #{partnerDog.name.capitalize}, is available for:"
+                caption = "Your partner dog, #{rname}, is available for:"
                 wuf.update(:status => "Dogwalk Date or Break-up")
                 renderPage = "/dogwalkdates/options"                
             else
                 pageTitle = currstatus
-                caption = "Please make sure to get in touch with #{partnerDog.name.capitalize}'s owner to push through with the breeding appointment."
+                caption = "Please make sure to get in touch with #{rname}'s owner to push through with the breeding appointment."
                 renderPage = "/breedappts/breedappt"  
             end
         end
@@ -358,7 +382,7 @@ class Woof < ApplicationRecord
         end
 
         #Note once 'Break-up' is chosen, STATUS back to 'Available'
-#binding.pry
+binding.pry
         partnerDog_img = getDogImage partnerDog_id
         
         return {
@@ -370,7 +394,9 @@ class Woof < ApplicationRecord
             :partnerDog_id => partnerDog_id,
             :partnerDog_img => partnerDog_img,
             :currentStatus => dog.status,
-            :woofupdateconfirmed => woofupdateconfirmed
+            :woofupdateconfirmed => woofupdateconfirmed,
+            :woofupdate_when => woofupdate_when,
+            :woofupdate_where => woofupdate_where
         }
     end #method
 end #class

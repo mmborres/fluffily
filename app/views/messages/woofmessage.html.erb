@@ -1,0 +1,44 @@
+<h1>Woof-up Messages</h1>
+
+<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
+
+<table class="messagetable">
+<% i = 0 %>
+<h2>Recent Message Exchanges</h2>
+<tr class="messagetr">
+<th class="messageth"><b>FROM</b></th>
+<th class="messageth"><i>MESSAGE</i></t>
+</tr>
+<% until i == @msgArray.length %>
+<tr class="messagetr">
+<td class="messagetd"><b><%= @msgArray[i][:sender_name] %></b></td>
+<td class="messagetd"><i><%= @msgArray[i][:message_text] %></i></td>
+</tr>
+<% i += 1 %>
+<% end %>
+
+<!-- form goes here -->
+<tr class="messagetr">
+<td class="messagetd"><b><%= @name %></b></td>
+<td class="messagetd">
+
+<!-- form -->
+<form action="/messages/woofmessagesend">
+<input type="hidden" name="currentdogid" id="currentdogid" value="<%=@currDogId%>">
+<input type="hidden" name="woofid" id="woofid" value="<%=@woofid%>">
+<input type="hidden" name="sender" id="sender" value="<%=@name%>">
+<textarea rows = "5" cols = "78" name="message_text" id="message_text"></textarea>
+<br><br>
+<button>Send</button>
+</form> 
+
+<!-- form -->
+</td>
+</tr>
+</table>
+
+<!-- hidden: <> has to reply back  -->
+
+
+<br><br>
+<%= link_to 'Back to My Dogs', dogs_path %>

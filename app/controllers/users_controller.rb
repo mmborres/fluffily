@@ -12,13 +12,16 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
-binding.pry
+#binding.pry
   end
 
   def update
-    user = User.find params[:id]
-    user.update user_params
-#binding.pry
+    user = User.new
+    id = params[:id]
+    name = params[:user][:name]
+    image = params[:user][:image]
+    user.updateSpecific id, name, image
+binding.pry
     redirect_to root_path
   end
 
@@ -41,6 +44,6 @@ binding.pry
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :dob)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :dob, :image)
   end
 end

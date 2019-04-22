@@ -51,17 +51,25 @@ a {
 img {
   width: 400px;
   height: 400px;
-
   max-width: 100%;
-  border: 5px solid #00bcd4;
+  border: 6px solid #379200c7;
+  border-radius: 10%;
 }
 
 button {
-background-color: #2a99a5;
+background-color: #022502;
 color: white;
 font-family: 'Raleway', sans-serif;
 font-size: 15px;
 border-radius: 0.5em;
+}
+
+.button {
+  background-color: #022502;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  border-radius: 0.5em;
 }
 
 p {
@@ -98,6 +106,12 @@ border-bottom-right-radius: 1em;
 background-color: #033a1ccf;
 }
 
+.boxchop {
+  object-fit: cover;
+  height: 100px;
+  width: 100px;
+ }
+
 .tableindex
 {
   width:30%;
@@ -112,22 +126,62 @@ background-color: #033a1ccf;
   border-style: double;
 }
 
+.messagetable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.messagetd {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid black;
+}
+
+.messagetr:nth-child(even){background-color: #f2f2f2}
+.messagetr:nth-child(odd){background-color: #b9d8a883}
+
+.messageth {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid black;
+}
+
 .container {
   max-width: 960px;
   margin: 0 auto;
 }
 
 .thumb {
-  max-height: 10em;
+  /*max-height: 10em;*/
+  object-fit: cover;
+  height: 150px;
+  width: 150px;
+}
+
+.currstatus {
+  /*max-height: 10em;*/
+  object-fit: cover;
+  height: 300px;
+  width: 250px;
 }
 
 .feature {
   max-width: 100%;
+  object-fit: cover;
+  /*height: 100px;
+  width: 100px;*/
 }
 
 
 .pLabel {
-background-color: #b2ebf2;
+background-color: #b2f2b7eb;
 border-bottom-left-radius: 1em;
 border-bottom-right-radius: 1em;
+}
+
+.ptext {
+  color: #90d239;
+  text-decoration: none;
+  font-weight: bold;
 }

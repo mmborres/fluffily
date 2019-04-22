@@ -91,6 +91,16 @@ class Woofupdate < ApplicationRecord
         woofupdate.update(:dog_request_id => id) #initiator
         partnerDogId = getWoofUpPartnerDogId id, woofupdate
         woofupdate.update(:dog_accept_id => partnerDogId)
+
+        #messages
+binding.pry
+        woof = Woof.find woofupdate.woof_id
+        message = Message.new
+        message.sender_id = id #initiator
+        message.sender_name = message.getName id
+        message.message_text = array[:message_text]
+        woof.messages << message
+        message.save
     end
 
     public 

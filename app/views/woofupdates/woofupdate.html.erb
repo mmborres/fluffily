@@ -14,28 +14,29 @@
 
 <%= link_to "Withdraw Woof-up?", "/woofupdates/withdraw/#{@woof_id}" %>
 
-<br>
-
-
 <br><br>
 
 
-<table border=1>
+
+
+
+<table class="messagetable">
 <% i = 0 %>
-Message Exchanges
-<tr>
-<td><b>From</b></td>
-<td><i>Message</i></td>
+<h2>Recent Message Exchanges</h2>
+<tr class="messagetr">
+<th class="messageth"><b>From</b></th>
+<th class="messageth"><i>Message</i></t>
 </tr>
 <% until i == @msgArray.length %>
-<tr>
-<td><b><%= @msgArray[i][:sender_name] %></b></td>
-<td><i><%= @msgArray[i][:message_text] %></i></td>
+<tr class="messagetr">
+<td class="messagetd"><b><%= @msgArray[i][:sender_name] %></b></td>
+<td class="messagetd"><i><%= @msgArray[i][:message_text] %></i></td>
 </tr>
 <% i += 1 %>
 <% end %>
 </table>
 
+<%= link_to 'View or Send Messages', "/messages/#{@woof_id}/#{@currentDog_id}/message" %> 
 <br>
 
 <br><br>

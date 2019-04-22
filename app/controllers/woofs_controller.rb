@@ -4,6 +4,7 @@ class WoofsController < ApplicationController
     @request_id = params[:id]
     @woof = Woof.new
     @matches = @woof.getMatches @request_id 
+    @dog = Dog.find @request_id
   #binding.pry
   end
 
@@ -43,7 +44,9 @@ class WoofsController < ApplicationController
     @woof_id = pageDetails[:woof_id]
     @currentStatus = pageDetails[:currentStatus]
     @woofupdateconfirmed = pageDetails[:woofupdateconfirmed]
-#binding.pry    
+    @woofupdate_when = pageDetails[:woofupdate_when]
+    @woofupdate_where = pageDetails[:woofupdate_where]
+binding.pry    
     render pageDetails[:pageToRender]
   end
 

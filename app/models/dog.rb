@@ -66,4 +66,24 @@ binding.pry
         return name
     end
 
+    public 
+    def getPartnerDog dog
+binding.pry
+        partnerDog = nil
+        wuf = Woof.find_by(status: dog.status)
+        if wuf == nil
+            wuf = Woof.find_by(status: "Pending")
+        end
+
+        if wuf != nil
+binding.pry
+            if dog.id == wuf.dog_accept_id
+                partnerDog = Dog.find wuf.dog_request_id
+            else
+                partnerDog = Dog.find wuf.dog_accept_id
+            end
+        end
+        return partnerDog
+    end
+
 end

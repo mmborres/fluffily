@@ -30,4 +30,15 @@ class User < ApplicationRecord
         end
     end
 
+
+    public
+    def updateSpecific (id, name, image)
+        updatestatement = "UPDATE users SET name='#{name}' WHERE id=#{id}"
+        ExecuteSql.run updatestatement, mode: :raw
+        if image.present?
+            updatestatement = "UPDATE users SET image='#{image}' WHERE id=#{id}"
+            ExecuteSql.run updatestatement, mode: :raw
+        end
+    end
+
 end
