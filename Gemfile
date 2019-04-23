@@ -29,14 +29,14 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # CUSTOM gems
-gem 'tinder_pyro', '~> 0.0.1'
+#gem 'tinder_pyro', '~> 0.0.1'
 gem 'lolcommits', '~> 0.12.1'
-gem 'dog_walker', '~> 0.1.2'
-gem 'dog_translator', '~> 0.0.1'
-gem 'dog_breeds', '~> 0.3.0'
-gem 'sugarpaccione', '~> 0.1.0'
+#gem 'dog_walker', '~> 0.1.2'
+#gem 'dog_translator', '~> 0.0.1'
+#gem 'dog_breeds', '~> 0.3.0'
+#gem 'sugarpaccione', '~> 0.1.0'
 gem 'execute_sql'
-gem 'activesupport-core-ext', '~> 4.0', '>= 4.0.0.3'
+#gem 'activesupport-core-ext', '~> 4.0', '>= 4.0.0.3'
 # CUSTOM gems
 
 # Reduces boot times through caching; required in config/boot.rb
