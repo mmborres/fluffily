@@ -47,8 +47,7 @@ class Dog < ApplicationRecord
 
     public
     def run_preferences
-binding.pry
-
+#binding.pry
     end
 
     public
@@ -61,14 +60,14 @@ binding.pry
     public
     def getOwnerName ownerid
         user = User.find ownerid
-binding.pry
+#binding.pry
         name = ( user.name == nil || user.name.empty? ) ? "" : (" " + user.name)
         return name
     end
 
     public 
     def getPartnerDog dog
-binding.pry
+#binding.pry
         partnerDog = nil
         wuf = Woof.find_by(status: dog.status)
         if wuf == nil
@@ -76,7 +75,7 @@ binding.pry
         end
 
         if wuf != nil
-binding.pry
+#binding.pry
             if dog.id == wuf.dog_accept_id
                 partnerDog = Dog.find wuf.dog_request_id
             else

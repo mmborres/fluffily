@@ -1,13 +1,14 @@
 <h1>Woof-up Messages</h1>
 
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
+<%if @dogimage.present? %><%= image_tag @dogimage, :class => 'currstatus' %><% end %>
+<%if @partnerDogimage.present? %><%= image_tag @partnerDogimage, :class => 'currstatus' %><% end %>
 
 <table class="messagetable">
 <% i = 0 %>
 <h2>Recent Message Exchanges</h2>
 <tr class="messagetr">
-<th class="messageth"><b>FROM</b></th>
-<th class="messageth"><i>MESSAGE</i></t>
+<th class="messageth" width="15%"><b>FROM</b></th>
+<th class="messageth" width="85%"><i>MESSAGE</i></t>
 </tr>
 <% until i == @msgArray.length %>
 <tr class="messagetr">
@@ -41,4 +42,5 @@
 
 
 <br><br>
+<%= link_to 'Back', :back %>
 <%= link_to 'Back to My Dogs', dogs_path %>

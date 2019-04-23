@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
 
 
   def woofmessage
-binding.pry
+#binding.pry
     msg = Message.new
     if params[:id].present?
       @currDogId = params[:id]
@@ -11,8 +11,12 @@ binding.pry
       @woofid = params[:woofid]
     end
     @name = msg.getName @currDogId    
-binding.pry
+#binding.pry
     @msgArray = Message.where(woof_id: @woofid)
+#binding.pry
+    images = msg.getDogImages params[:id], params[:woofid]
+    @dogimage = images[:dogimage]
+    @partnerDogimage = images[:partnerDogimage]
 #binding.pry
   end
 
@@ -22,7 +26,7 @@ binding.pry
     msg.saveMessage params[:woofid], params[:currentdogid], params[:message_text], params[:sender]
     @currDogId = params[:currentdogid]
     @woofid = params[:woofid]
-binding.pry
+#binding.pry
     redirect_to "/messages/#{@woofid}/#{@currDogId}/message"
   end
 end

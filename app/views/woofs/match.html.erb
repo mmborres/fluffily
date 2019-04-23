@@ -5,7 +5,7 @@
     <tr>
     <td><%= link_to d.name, "/woofs/#{@request_id}/#{d.id}/show" %></td>
     <td><%if d.image.present? %><%= link_to image_tag(d.image, :class => 'thumb'), "/woofs/#{@request_id}/#{d.id}/show" %><% end %></td>
-    <td>Status:<br><%= link_to d.status, "/woofs/#{@request_id}/#{d.id}/show" %></td>
+    <td><span class="ptext">Status:</span><br><%= link_to d.status, "/woofs/#{@request_id}/#{d.id}/show" %></td>
     </tr>
     <% end %>
 </table>
@@ -19,4 +19,5 @@ Sorry, no matches found. <br>Please update the Dog's Preferences <br>in the Edit
 <%= link_to "Edit #{@dog.name}'s Settings", edit_dog_path(@dog.id) %>
 <%end%>
 <br><br>
+<%= link_to 'Back', :back %>
 <%= link_to 'Back to My Dogs', dogs_path %>

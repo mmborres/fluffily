@@ -23,25 +23,25 @@
     <br><br><%= f.label :image %>
     <br><%= f.url_field :image, :required => true %>
 
-    <br><br><%= f.label :location %>
+    <br><br><%= f.label :location %> (in Australia only)
     <br><%= f.text_field :location, :required => true %>
 
     <br><br>Looking for Dogs that are: 
 
-    <br><br><%= f.label :pref_sex %><br>
+    <br><br><%= f.label :pref_sex, "Preferred Sex"  %><br>
     
     <%= radio_button_tag 'dog[pref_sex]', 'Male', checked = @booleanMalepref_sex %>
     <%= label_tag('dog[pref_sex]', 'Male' ) %>
     <%= radio_button_tag 'dog[pref_sex]', 'Female', checked = @booleanFemalepref_sex %>
     <%= label_tag('dog[pref_sex]', 'Female' ) %>
 
-    <br><br><%= f.label :pref_breed %>
+    <br><br><%= f.label :pref_breed, "Preferred Breed"  %>
     <br><%= f.text_field :pref_breed, :placeholder => 'Any', :value => 'Any' %>
 
-    <br><br><%= f.label :pref_color %>
+    <br><br><%= f.label :pref_color, "Preferred Color"  %>
     <br><%= f.text_field :pref_color, :placeholder => 'Any', :value => 'Any' %>
 
-    <br><br><%= f.label :pref_location %>
+    <br><br><%= f.label :pref_location, "Preferred Location"  %> (in Australia only)
     <br><%= f.text_field :pref_location, :placeholder => 'Any', :value => 'Any' %>
 
     <br><br>
@@ -50,4 +50,5 @@
 
 
 <br><br>
+<%= link_to 'Back', :back %>
 <%= link_to 'Back to My Dogs', dogs_path %>

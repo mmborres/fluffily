@@ -1,18 +1,21 @@
 <%if @woofupdateconfirmed %>
 <h1><%= @heading %></h1>
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
+<%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %>
+<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %>
 <h2><%= @subheading %></h2>
 <ul style="display:table; margin:0 auto; text-align: left;">
-<li style="color: #c7cc95;"><%= link_to 'Set up Breeding Appointment (once a year only)', "" %></li>
+<li style="color: #c7cc95;"><%= link_to 'Set up Breeding Appointment (once a year only)', "/breedappts/breedappt/#{@woof_id}" %></li>
 <li style="color: #c7cc95;"><%= link_to 'Set up Dogwalk Date', "" %></li>
 <li style="color: #c7cc95;"><%= link_to 'Breakup', "" %></li>
 </ul>
 <% else %>
 <h1>Please confirm Woof-up</h1>
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
+<%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %>
+<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %>
 <br>Details<br>
 <%= link_to 'Confirm Woof-up', "/woofupdates/confirm/#{@woof_id}" %>
 <% end %>
 
 <br><br>
+<%= link_to 'Back', :back %>
 <%= link_to 'Back to My Dogs', dogs_path %>

@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get '/woofupdates/:id/setupwoofup/:woofid' => 'woofupdates#setupwoofup'
 
   get '/breedappts/options' => 'breedappts#breedappt'
-  get '/breedappts/breedappt' => 'breedappts#breedappt'
+  get '/breedappts/breedappt/:woofid' => 'breedappts#breedappt'
 
   get '/dogwalkdates/options' => 'dogwalkdates#dogwalkdate'
   get '/dogwalkdates/dogwalkdate' => 'dogwalkdates#dogwalkdate'

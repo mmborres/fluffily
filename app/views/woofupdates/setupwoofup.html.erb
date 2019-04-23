@@ -3,7 +3,9 @@
 <h2><%= @subheading %></h2>
 
 <br>
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
+<%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %>
+<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %>
+
 
 <p class="pLabel">
 <br>
@@ -26,5 +28,6 @@ Where: <%= @woofupdate_where %>
 
 
 <br><br>
+<%= link_to 'Back', :back %>
 <%= link_to 'Back to My Dogs', dogs_path %>
 

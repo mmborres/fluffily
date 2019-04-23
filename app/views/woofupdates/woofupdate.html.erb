@@ -24,8 +24,8 @@
 <% i = 0 %>
 <h2>Recent Message Exchanges</h2>
 <tr class="messagetr">
-<th class="messageth"><b>From</b></th>
-<th class="messageth"><i>Message</i></t>
+<th class="messageth" width="15%"><b>From</b></th>
+<th class="messageth" width="85%"><i>Message</i></t>
 </tr>
 <% until i == @msgArray.length %>
 <tr class="messagetr">
@@ -40,4 +40,5 @@
 <br>
 
 <br><br>
+<%= link_to 'Back', :back %>
 <%= link_to 'Back to My Dogs', dogs_path %>

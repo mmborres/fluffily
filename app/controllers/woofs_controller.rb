@@ -18,7 +18,7 @@ class WoofsController < ApplicationController
 #binding.pry
     @request_id = params[:id]
     @mydog = Dog.find @request_id
-    #dog to show is params[:id2]
+    #dog to show is params[:id2] --- #partner
     @dog = Dog.find params[:id2]
     @owner_name = @dog.getOwnerName @dog.user_id
   end
@@ -41,12 +41,13 @@ class WoofsController < ApplicationController
     @partnerDog_id = pageDetails[:partnerDog_id]
     @currentDog_id = @initiator_dogid
     @partnerDog_img = pageDetails[:partnerDog_img]
+    @currentDog_img = pageDetails[:currentDog_img]
     @woof_id = pageDetails[:woof_id]
     @currentStatus = pageDetails[:currentStatus]
     @woofupdateconfirmed = pageDetails[:woofupdateconfirmed]
     @woofupdate_when = pageDetails[:woofupdate_when]
     @woofupdate_where = pageDetails[:woofupdate_where]
-binding.pry    
+#binding.pry    
     render pageDetails[:pageToRender]
   end
 

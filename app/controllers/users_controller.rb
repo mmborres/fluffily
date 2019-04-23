@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     name = params[:user][:name]
     image = params[:user][:image]
     user.updateSpecific id, name, image
-binding.pry
+#binding.pry
     redirect_to root_path
   end
 

@@ -23,7 +23,7 @@
     <br><br><%= f.label :image %>
     <br><%= f.url_field :image, :required => true %>
 
-    <br><br><%= f.label :location %>
+    <br><br><%= f.label :location %> (in Australia only)
     <br><%= f.text_field :location, :required => true %>
 
 <% if @dog.status == 'Available' %>
@@ -42,7 +42,7 @@
     <br><br><%= f.label :pref_color, "Preferred Color" %>
     <br><%= f.text_field :pref_color, :placeholder => 'Any' %>
 
-    <br><br><%= f.label :pref_location, "Preferred Location" %>
+    <br><br><%= f.label :pref_location, "Preferred Location" %> (in Australia only)
     <br><%= f.text_field :pref_location, :placeholder => 'Any' %>
 <% end %>
 
@@ -51,4 +51,5 @@
 <% end %>
 
 <br><br>
+<%= link_to 'Back', :back %>
 <%= link_to 'Back to My Dogs', dogs_path %>

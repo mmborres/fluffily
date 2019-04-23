@@ -2,10 +2,18 @@
 
 <%if @dog.image.present? %><%= image_tag @dog.image, :class => 'feature' %><% end %>
 
-<br>Details<br>
+<p class="pLabel">
 
+<%= @dog.name %> is a <%= @dog.sex %> <%= @dog.breed %> born on <%= @dog.dob %>. <br>
+<% if @dog.sex == 'Female' %>She<% else %>He<% end %> is looking for dogs that are
+<%= @dog.pref_sex %> and of <%= @dog.pref_breed %> breed and <%= @dog.pref_color %> color 
+and lives in <%= @dog.pref_location %> part of Australia.
+
+
+</p>
 
 <%= link_to 'Want to Woof-up?', "/woofs/#{@request_id}/#{@dog.id}/requestpage" %>
 
 <br><br>
+<%= link_to 'Back', :back %>
 <%= link_to 'Back to My Dogs', dogs_path %>

@@ -34,5 +34,23 @@ class Message < ApplicationRecord
         message.save
     end
 
+    public
+    def getDogImages (id, woofid)
+        woof = Woof.find woofid
+        dog = Dog.find id
+#binding.pry
+        #just making sure, get correct partner
+        if id == woof.dog_request_id.to_s
+            partnerDog = Dog.find woof.dog_accept_id
+        end
+        if id == woof.dog_accept_id.to_s
+            partnerDog = Dog.find woof.dog_request_id
+        end
+
+        return {
+            :dogimage => dog.image,
+            :partnerDogimage => partnerDog.image
+        }
+    end
 
 end

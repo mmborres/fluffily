@@ -66,6 +66,17 @@ class Woof < ApplicationRecord
     return matchedDogs
     end
 
+    public
+    def getRecentMessages messages
+#binding.pry
+        last = messages.length-1
+        beforelast = last-2
+        messageArray = messages[beforelast..last].reverse
+#binding.pry
+        return messageArray
+    end
+
+
     public 
     def createInitialWoof (request_id, accept_id, messageText)
         woof = Woof.new
@@ -182,7 +193,7 @@ class Woof < ApplicationRecord
                     rname = rname.capitalize
                 end
                 caption = "#{rname} is waiting on your approval."
-                messageArray = wuf.messages[0..1]
+                messageArray = getRecentMessages wuf.messages
                 renderPage = "/woofupdates/woofupdate"
                 partnerDog_id = requestdog.id
             else
@@ -196,7 +207,7 @@ class Woof < ApplicationRecord
                     rname = rname.capitalize
                 end
                 caption = "You are waiting on #{rname}'s approval."
-                messageArray = wuf.messages[0..1]
+                messageArray = getRecentMessages wuf.messages
                 renderPage = "/woofupdates/woofupdate"
                 partnerDog_id = acceptdog.id
             end
@@ -212,7 +223,7 @@ class Woof < ApplicationRecord
             wuf = getWoof id, currstatus
             pageTitle = currstatus
             caption = "Enter details for the Woof-up."
-            messageArray = wuf.messages[0..1]
+            messageArray = getRecentMessages wuf.messages
             renderPage = "/woofupdates/woof"
             partnerDog_id = (getWoofPartnerDog id, wuf).id
 #binding.pry
@@ -235,7 +246,7 @@ class Woof < ApplicationRecord
             expired = DateTime.now.to_date > wufup.woofdate
 #binding.pry
             partnerDog = getWoofPartnerDog id, wuf
-            messageArray = wuf.messages[0..1]
+            messageArray = getRecentMessages wuf.messages
             partnerDog_id = partnerDog.id
 
             rname = partnerDog.name
@@ -272,7 +283,7 @@ class Woof < ApplicationRecord
                 rname = rname.capitalize
             end
             caption = "Your partner dog, #{rname}, is available for:"
-            messageArray = wuf.messages[0..1]
+            messageArray = getRecentMessages wuf.messages
             partnerDog_id = partnerDog.id
 
             woofupdate = Woofupdate.find_by(woof_id: wuf.id)
@@ -298,7 +309,7 @@ class Woof < ApplicationRecord
             #Date.now > wuf.woofdate
             #DateTime.now.to_date > wuf.woofdate
             partnerDog = getWoofPartnerDog id, wuf
-            messageArray = wuf.messages[0..1]
+            messageArray = getRecentMessages wuf.messages
             partnerDog_id = partnerDog.id
 
             rname = partnerDog.name
@@ -347,7 +358,7 @@ class Woof < ApplicationRecord
             wuf = getWoof id, currstatus
             expired = DateTime.now > wuf.updated_at
             partnerDog = getWoofPartnerDog id, wuf
-            messageArray = wuf.messages[0..1]
+            messageArray = getRecentMessages wuf.messages
             partnerDog_id = partnerDog.id
 
             if expired
@@ -375,14 +386,14 @@ class Woof < ApplicationRecord
             wuf = getWoof id, currstatus
             pageTitle = "More Woof-up Options"
             partnerDog = getWoofPartnerDog id, wuf
-            messageArray = wuf.messages[0..1]
+            messageArray = getRecentMessages wuf.messages
             partnerDog_id = partnerDog.id
             caption = "Your partner dog, #{partnerDog.name.capitalize}, is available for:"
             renderPage = "/dogwalkdates/options" 
         end
 
         #Note once 'Break-up' is chosen, STATUS back to 'Available'
-binding.pry
+#binding.pry
         partnerDog_img = getDogImage partnerDog_id
         
         return {
@@ -393,6 +404,7 @@ binding.pry
             :subheading => caption,
             :partnerDog_id => partnerDog_id,
             :partnerDog_img => partnerDog_img,
+            :currentDog_img => dog.image,
             :currentStatus => dog.status,
             :woofupdateconfirmed => woofupdateconfirmed,
             :woofupdate_when => woofupdate_when,

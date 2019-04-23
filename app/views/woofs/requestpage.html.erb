@@ -1,8 +1,10 @@
 <h1>Woof-up with <%= @dog.name %></h1>
 
-<%if @dog.image.present? %><%= image_tag @dog.image, :class => 'feature' %><% end %>
-<br><br>
+<%if @mydog.image.present? %><%= image_tag @mydog.image, :class => 'currstatus' %><% end %>
+<%if @dog.image.present? %><%= image_tag @dog.image, :class => 'currstatus' %><% end %>
+<br>
 
+<p class="pLabel">
 <b>HOUSE RULES</b><br><br>
 
 The first woof-up needs an approval. Succeeding woof-ups like Dogwalk dates or Breeding appointment (can be set up once a year only) 
@@ -22,6 +24,8 @@ placeholder="Hi<%=@owner_name%>, I am hoping our dogs could have an initial meet
   <br><br>
   <button>Request Woof-up</button>
 </form> 
+</p>
 
 <br><br>
+<%= link_to 'Back', :back %>
 <%= link_to 'Back to My Dogs', dogs_path %>

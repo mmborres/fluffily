@@ -18,7 +18,7 @@ class DogsController < ApplicationController
   end
 
   def show
-binding.pry
+#binding.pry
     @showmatches = true
     @dog = Dog.find params[:id]
     if @dog.status.present?

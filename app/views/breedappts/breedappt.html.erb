@@ -1,18 +1,1 @@
-<%if @woofupdateconfirmed %>
-<h1><%= @heading %></h1>
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
-<h2><%= @subheading %></h2>
-<ul style="display:table; margin:0 auto; text-align: left;">
-<li style="color: #c7cc95;"><%= link_to 'Set up Breeding Appointment (once a year only)', "" %></li>
-<li style="color: #c7cc95;"><%= link_to 'Set up Dogwalk Date', "" %></li>
-<li style="color: #c7cc95;"><%= link_to 'Breakup', "" %></li>
-</ul>
-<% else %>
-<h1>Please confirm Woof-up</h1>
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
-<br>Details<br>
-<%= link_to 'Confirm Woof-up', "/woofupdates/confirm/#{@woof_id}" %>
-<% end %>
-
-<br><br>
-<%= link_to 'Back to My Dogs', dogs_path %>
+Set up Breeding Appointment?
