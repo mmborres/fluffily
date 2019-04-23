@@ -40,6 +40,8 @@ class WoofsController < ApplicationController
     @msgArray = pageDetails[:msgArray]
     @partnerDog_id = pageDetails[:partnerDog_id]
     @currentDog_id = @initiator_dogid
+    @currentDog_name = pageDetails[:currentDog_name]
+    @partnerDog_name = pageDetails[:partnerDog_name]
     @partnerDog_img = pageDetails[:partnerDog_img]
     @currentDog_img = pageDetails[:currentDog_img]
     @woof_id = pageDetails[:woof_id]
@@ -47,6 +49,8 @@ class WoofsController < ApplicationController
     @woofupdateconfirmed = pageDetails[:woofupdateconfirmed]
     @woofupdate_when = pageDetails[:woofupdate_when]
     @woofupdate_where = pageDetails[:woofupdate_where]
+    @breedappt_when = pageDetails[:breedappt_when]
+    @breedappt_where = pageDetails[:breedappt_where]
 #binding.pry    
     render pageDetails[:pageToRender]
   end

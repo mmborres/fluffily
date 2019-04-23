@@ -1,13 +1,35 @@
+<%if @breedapptconfirmed %>
 <h1><%= @heading %></h1>
+<!--
+<%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %>
+<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %>
+-->
+<div class="divflex">
+<div class="imgoverlay"><%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @currentDog_name %>&hearts;</div></div>
+<div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog_name%>&hearts;</div></div>
+</div>
 
 <h2><%= @subheading %></h2>
-
-
-
-
-
-
+<ul style="display:table; margin:0 auto; text-align: left;">
+<!-- li style="color: #c7cc95;"><%= link_to 'Set up Breeding Appointment (once a year only)', "/breedappts/#{@currentDog_id}/breedappt/#{@woof_id}" %></li -->
+<li style="color: #c7cc95;"><%= link_to 'Set up Dogwalk Date', "/dogwalkdates/#{@currentDog_id}/dogwalkdate/#{@woof_id}" %></li>
+<li style="color: #c7cc95;"><%= link_to 'Break up', "/dogwalkdates/#{@woof_id}/breakup" %></li>
+</ul>
+<% else %>
+<h1>Please confirm Breeding Appointment</h1>
+<div class="imgoverlay"><%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @currentDog_name %>&hearts;</div></div>
+<div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog_name%>&hearts;</div></div>
+<p class="pLabel">
+<br>
+<b>BREEDING APPOINTMENT DETAILS</b>
+<br>
+When: <%= @breedappt_when %>
+<br>
+Where: <%= @breedappt_where %>
+<br>&nbsp;
+</p>
+<%= link_to 'Confirm Breeding Appointment', "/breedappts/confirm/#{@woof_id}" %>
+<% end %>
 
 <br><br>
-<%= link_to 'Back', :back %>
 <%= link_to 'Back to My Dogs', dogs_path %>

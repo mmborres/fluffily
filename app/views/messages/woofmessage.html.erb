@@ -5,6 +5,8 @@
 <div class="imgoverlay"><%if @partnerDogimage.present? %><%= image_tag @partnerDogimage, :class => 'thumb' %><% end %><div class="bottom-left">&hearts;<%= @partnerDogname%>&hearts;</div></div>
 </div>
 
+<input type="hidden" name="firstDisplay" id="firstDisplay" value="<%= @firstDisplay %>">
+
 <table class="messagetable">
 <% i = 0 %>
 <h2>Recent Message Exchanges</h2>
@@ -50,14 +52,18 @@
 
 <script>
 
-
+/* scroll to message box if this is not the first display,
+meaning sender has been sending messages already
+and would be annoyed scrolling to the bottom of the page everytime*/
 function gotoBottom(id){
-   var element = document.getElementById(id);
-   element.scrollTop = element.scrollHeight - element.clientHeight;
+   const firstDisplay = document.getElementById("firstDisplay");
 
-   document.getElementById(id).innerHTML = "Hello";
-
-   window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+   if (firstDisplay==='no') {
+      const element = document.getElementById(id);
+      element.scrollTop = element.scrollHeight - element.clientHeight;
+      document.getElementById(id).innerHTML = "Hello";
+      window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+   }
 }
 
 gotoBottom("message_text");

@@ -2,6 +2,8 @@ class MessagesController < ApplicationController
 
 
   def woofmessage
+    #first call to YES
+    @firstDisplay='yes'
 #binding.pry
     msg = Message.new
     if params[:id].present?
@@ -22,6 +24,8 @@ class MessagesController < ApplicationController
   end
 
   def woofmessagesend
+    #first call to NO
+    @firstDisplay='no'
 #binding.pry
     msg = Message.new
     msg.saveMessage params[:woofid], params[:currentdogid], params[:message_text], params[:sender]
@@ -30,4 +34,7 @@ class MessagesController < ApplicationController
 #binding.pry
     redirect_to "/messages/#{@woofid}/#{@currDogId}/message"
   end
+
+
+
 end

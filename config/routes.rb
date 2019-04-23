@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/woofupdates/woofupdate' => 'woofupdates#woofupdate'
   get '/woofupdates/:id/woof/:woofid' => 'woofupdates#woof'
   get '/woofupdates/withdraw/:woofid' => 'woofupdates#withdraw'
+
   get '/woofupdates/:id/edit/:woofid' => 'woofupdates#edit'
   get '/woofupdates/:id/update/:woofid' => 'woofupdates#update'
   get '/woofupdates/cancel/:woofid' => 'woofupdates#cancel'
@@ -30,7 +31,13 @@ Rails.application.routes.draw do
   get '/woofupdates/:id/setupwoofup/:woofid' => 'woofupdates#setupwoofup'
 
   get '/breedappts/options' => 'breedappts#breedappt'
-  get '/breedappts/breedappt/:woofid' => 'breedappts#breedappt'
+  get '/breedappts/:id/breedappt/:woofid' => 'breedappts#breedappt'
+  get '/breedappts/:id/setupbreedappt/:woofid' => 'breedappts#setupbreedappt'
+  get '/breedappts/reminder' => 'breedappts#reminder'
+  get '/breedappts/:id/edit/:woofid' => 'breedappts#edit'
+  get '/breedappts/:id/update/:woofid' => 'breedappts#update'
+  get '/breedappts/cancel/:woofid' => 'breedappts#cancel'
+  get '/breedappts/confirm/:woofid' => 'breedappts#confirm'
 
   get '/dogwalkdates/options' => 'dogwalkdates#dogwalkdate'
   get '/dogwalkdates/dogwalkdate' => 'dogwalkdates#dogwalkdate'
@@ -39,5 +46,8 @@ Rails.application.routes.draw do
   get '/messages//message' => 'messages#woofmessage'
   get '/messages/woofmessagesend' => 'messages#woofmessagesend'
   post '/messages/woofmessagesend' => 'messages#woofmessagesend'
+
+  get '/dogwalkdates/:woofid/breakup' => 'dogwalkdates#breakup'
+  get '/dogwalkdates/:woofid/breakup/confirm' => 'dogwalkdates#breakupconfirm'
 
 end

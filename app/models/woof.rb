@@ -122,18 +122,20 @@ class Woof < ApplicationRecord
 
     public
     def updateStatusDogwalkDateorBreakup wuf
-        #set to "Dogwalk Date or Break-up"
-        wuf.update(:status => "Dogwalk Date or Break-up")
+        #set to "Breeding Appointment Expired"
+        wuf.update(:status => "Breeding Appointment Expired")
         request_dog = Dog.find wuf.dog_request_id
         accept_dog = Dog.find wuf.dog_accept_id
 
-        request_dog.update(:status => "Dogwalk Date or Break-up")
-        accept_dog.update(:status => "Dogwalk Date or Break-up")
+        request_dog.update(:status => "Breeding Appointment Expired")
+        accept_dog.update(:status => "Breeding Appointment Expired")
     end
 
 
     public 
     def getWoof (id, currstatus)
+binding.pry
+        id = id.to_i
         wuf = Woof.find_by(dog_accept_id: id, status: currstatus)
 #binding.pry
         if ( (wuf == nil) || (wuf == "") )
@@ -152,8 +154,9 @@ class Woof < ApplicationRecord
 
     public 
     def getWoofPartnerDog (id, wuf)
+binding.pry
         partnerDog = nil
-        if id == wuf.dog_accept_id.to_s
+        if ( (id == wuf.dog_accept_id) || (id == wuf.dog_accept_id.to_s) )
             partnerDog = Dog.find wuf.dog_request_id
         else
             partnerDog = Dog.find wuf.dog_accept_id
@@ -168,6 +171,12 @@ class Woof < ApplicationRecord
         return dog.image
     end
 
+    public 
+    def getDogName id 
+        dog = Dog.find id
+        return dog.name
+    end
+
     public
     def getStatusPageDetails id
         dog = Dog.find id
@@ -178,6 +187,7 @@ class Woof < ApplicationRecord
         caption = ""
         partnerDog_id = 0
         woofupdateconfirmed = false
+        breedapptconfirmed = false
 
         #Find Woof-up
         #  dog_request_id :integer
@@ -296,7 +306,11 @@ class Woof < ApplicationRecord
                     woofupdateconfirmed = true
             end
 #binding.pry
+            #LOOK UP Breeadappts table
+            #if no entry for both dos as partner
             renderPage = "/breedappts/options"  
+            #else
+            #renderPage is = "'/dogwalkdates/options"
         end
 
         currstatus = "Breeding Appointment Reminder"
@@ -309,9 +323,9 @@ class Woof < ApplicationRecord
                 #message
 
             wuf = getWoof id, currstatus
-            expired = false
-            #Date.now > wuf.woofdate
-            #DateTime.now.to_date > wuf.woofdate
+            bp = Breedappt.find_by woof_id: wuf.id 
+            expired = DateTime.now.to_date > bp.breeddate
+
             partnerDog = getWoofPartnerDog id, wuf
             messageArray = getRecentMessages wuf.messages
             partnerDog_id = partnerDog.id
@@ -321,21 +335,23 @@ class Woof < ApplicationRecord
                 rname = rname.capitalize
             end
 
+            breedappt_when = bp.breeddate
+            breedappt_where = bp.place
+binding.pry
             if expired
                 updateStatusDogwalkDateorBreakup wuf
-                #wuf.status = "Dogwalk Date or Break-up"
                 pageTitle = "More Woof-up Options"
                 caption = "Your partner dog, #{rname}, is available for:"
-                wuf.update(:status => "Dogwalk Date or Break-up")
+                #wuf.update(:status => "Breeding Appointment Expired")
                 renderPage = "/dogwalkdates/options"                
             else
                 pageTitle = currstatus
                 caption = "Please make sure to get in touch with #{rname}'s owner to push through with the breeding appointment."
-                renderPage = "/breedappts/breedappt"  
+                renderPage = "/breedappts/reminder"  
             end
         end
 
-=begin
+
         currstatus = "Breeding Appointment Expired"
         if dog.status.include? currstatus
             #show page with options to set up Dogwalk Date or Break-up (links)
@@ -343,12 +359,23 @@ class Woof < ApplicationRecord
             #message
             wuf = getWoof id, currstatus
             pageTitle = "More Woof-up Options"    
+binding.pry
             partnerDog = getWoofPartnerDog id, wuf
-            caption = "#{partnerDog.name.capitalize} is available for:"
-            messageArray = wuf.messages[0..1]
+            rname = partnerDog.name
+            if rname.chars.first != rname.chars.first.upcase
+                rname = rname.capitalize
+            end
+            caption = "Your partner dog, #{rname}, is available for:"
+            messageArray = getRecentMessages wuf.messages
             partnerDog_id = partnerDog.id
+
+            breedappt = Breedappt.find_by(woof_id: wuf.id)
+#binding.pry
+            if ( breedappt.status.present? && !(breedappt.status.empty?) && (breedappt.status == "Confirmed") )
+                breedapptconfirmed = true
+            end
         end
-=end
+
 
         currstatus = "Dogwalk Date Reminder"
         if dog.status.include? currstatus
@@ -399,7 +426,8 @@ class Woof < ApplicationRecord
         #Note once 'Break-up' is chosen, STATUS back to 'Available'
 #binding.pry
         partnerDog_img = getDogImage partnerDog_id
-        
+        partnerDog_name = getDogName partnerDog_id
+
         return {
             :woof_id => wuf.id,
             :msgArray => messageArray,
@@ -408,11 +436,16 @@ class Woof < ApplicationRecord
             :subheading => caption,
             :partnerDog_id => partnerDog_id,
             :partnerDog_img => partnerDog_img,
+            :partnerDog_name => partnerDog_name,
             :currentDog_img => dog.image,
+            :currentDog_name => dog.name,
             :currentStatus => dog.status,
             :woofupdateconfirmed => woofupdateconfirmed,
+            :breedapptconfirmed => breedapptconfirmed,
             :woofupdate_when => woofupdate_when,
-            :woofupdate_where => woofupdate_where
+            :woofupdate_where => woofupdate_where,
+            :breedappt_when => breedappt_when,
+            :breedappt_where => breedappt_where
         }
     end #method
 end #class
