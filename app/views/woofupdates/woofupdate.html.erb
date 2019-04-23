@@ -1,6 +1,11 @@
 <h1><%= @heading %></h1>
 
+<!--
 <%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
+-->
+
+<div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %><div class="bottom-left">&hearts;<%= @dog.name%>&hearts;</div></div>
+
 
 <br>
 

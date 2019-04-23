@@ -49,7 +49,8 @@ class Message < ApplicationRecord
 
         return {
             :dogimage => dog.image,
-            :partnerDogimage => partnerDog.image
+            :partnerDogimage => partnerDog.image,
+            :partnerDogname => partnerDog.name
         }
     end
 

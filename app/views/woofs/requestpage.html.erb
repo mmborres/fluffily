@@ -1,7 +1,15 @@
 <h1>Woof-up with <%= @dog.name %></h1>
 
+<!--
 <%if @mydog.image.present? %><%= image_tag @mydog.image, :class => 'currstatus' %><% end %>
 <%if @dog.image.present? %><%= image_tag @dog.image, :class => 'currstatus' %><% end %>
+--->
+
+<div class="divflex">
+<div class="imgoverlay"><%if @mydog.image.present? %><%= image_tag @mydog.image, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @mydog.name %>&hearts;</div></div>
+<div class="imgoverlay"><%if @dog.image.present? %><%= image_tag @dog.image, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @dog.name%>&hearts;</div></div>
+</div>
+
 <br>
 
 <p class="pLabel">

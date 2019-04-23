@@ -1,7 +1,9 @@
 <h1>Woof-up Messages</h1>
 
-<%if @dogimage.present? %><%= image_tag @dogimage, :class => 'currstatus' %><% end %>
-<%if @partnerDogimage.present? %><%= image_tag @partnerDogimage, :class => 'currstatus' %><% end %>
+<div class="divflex">
+<div class="imgoverlay"><%if @dogimage.present? %><%= image_tag @dogimage, :class => 'thumb' %><% end %><div class="bottom-right">&hearts;<%= @name %>&hearts;</div></div>
+<div class="imgoverlay"><%if @partnerDogimage.present? %><%= image_tag @partnerDogimage, :class => 'thumb' %><% end %><div class="bottom-left">&hearts;<%= @partnerDogname%>&hearts;</div></div>
+</div>
 
 <table class="messagetable">
 <% i = 0 %>
@@ -42,5 +44,22 @@
 
 
 <br><br>
-<%= link_to 'Back', :back %>
 <%= link_to 'Back to My Dogs', dogs_path %>
+
+
+
+<script>
+
+
+function gotoBottom(id){
+   var element = document.getElementById(id);
+   element.scrollTop = element.scrollHeight - element.clientHeight;
+
+   document.getElementById(id).innerHTML = "Hello";
+
+   window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+}
+
+gotoBottom("message_text");
+
+</script>

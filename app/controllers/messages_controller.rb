@@ -17,6 +17,7 @@ class MessagesController < ApplicationController
     images = msg.getDogImages params[:id], params[:woofid]
     @dogimage = images[:dogimage]
     @partnerDogimage = images[:partnerDogimage]
+    @partnerDogname = images[:partnerDogname]
 #binding.pry
   end
 

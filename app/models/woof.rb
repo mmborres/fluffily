@@ -68,6 +68,10 @@ class Woof < ApplicationRecord
 
     public
     def getRecentMessages messages
+        if messages.length < 4
+            messageArray = messages
+            return messageArray
+        end
 #binding.pry
         last = messages.length-1
         beforelast = last-2
