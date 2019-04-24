@@ -1,0 +1,14 @@
+coverage
+*.gem
+.bundle
+Gemfile.lock
+pkg/*
+.rvmrc
+.ruby-version
+.ruby-gemset
+results.html
+html
+tmp
+*.swp
+*.swo
+vendor/bundle

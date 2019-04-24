@@ -1,7 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    Magic8Ball (0.0.6)
     actioncable (5.2.3)
       actionpack (= 5.2.3)
       nio4r (~> 2.0)
@@ -208,7 +207,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  Magic8Ball (~> 0.0.6)
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug

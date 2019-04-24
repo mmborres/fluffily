@@ -1,0 +1,97 @@
+= mercurial-ruby
+
+Ruby API for Mercurial DVCS. Powers Mercurial on http://beanstalkapp.com
+
+== Documentation
+
+Please refer to YARD documentation here:
+
+http://rubydoc.info/gems/mercurial-ruby/file/README.rdoc
+
+Github doesn't support some YARd-specific syntax so this README can look broken.
+
+== Installation
+
+ gem install mercurial-ruby
+ 
+== Compatibility
+
+Tested with Mercurial versions 1.9, 1.9.1, 2.1, 2.5.2; Ruby versions 1.8.7, 1.9.3 and 2.0.0.
+
+== Configuration
+
+There are several settings you can configure:
+
+ Mercurial.configure do |conf|
+   conf.hg_binary_path = "/usr/bin/hg"
+ end
+ 
+See {Mercurial::Configuration Configuration} class for details.
+ 
+== Usage
+
+All actions are performed through {Mercurial::Repository Repository} object.
+So before you can start doing anything you need to initialize one. Either by creating a new repository:
+
+ repository = Mercurial::Repository.create("/path/to/new_repository")
+
+or opening an existing one:
+
+ repository = Mercurial::Repository.open("/path/to/existing_repository")
+ 
+Now feel free to invoke various methods to get changesets, branches, nodes, etc:
+
+ repository.commits.by_hash_ids('291a498f04e9', '63f70b2314ed')
+ repository.branches.all
+ repository.hooks.by_name('commit')
+ ...
+ 
+See Features section below for a full list of entities and their methods.
+ 
+== Features
+
+=== Mercurial Entities
+
+* {Mercurial::Repository Repository}
+* {Mercurial::ConfigFile .hgrc} — hooks and various settings
+* {Mercurial::Commit Commits}
+* {Mercurial::Node Nodes} — files and directories
+* {Mercurial::Branch Branches}
+* {Mercurial::Tag Tags}
+* {Mercurial::Diff Diffs}
+* {Mercurial::Blame Blame}
+* {Mercurial::Manifest Manifest}
+* {Mercurial::FileIndex File Index}
+
+=== Custom Commands
+
+You can use {Mercurial::Shell Shell} class to execute custom shell commands that
+weren't added to the gem as first-class citizens yet.
+
+=== Built-in Caching
+
+There's a simple caching mechanism built into the gem. If you pass Rails CacheStore-compatible
+caching store to the Configuration block, mercurial-ruby will cache output of all hg commands
+it's executing. Then if you execute same method again and it will run the same command,
+the gem will return the output from cache.
+
+Here's how you configure it:
+
+ Mercurial.configure do |conf|
+   conf.cache_store = Rails.cache
+ end
+ 
+The gem is using a single method of the CacheStore called +fetch+.
+Cache expires automatically when repository's mtime changes, and it's your job to update it.
+
+=== Built-in Timeouts 
+
+You can provide a timeout for pretty much any command you are running. Do it like this:
+
+ repository.commits.all(:timeout => 5)
+
+== Copyright
+
+Copyright (c) 2013 Ilya Sabanin. See LICENSE.txt for
+further details.
+
