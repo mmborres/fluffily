@@ -51,6 +51,10 @@ class WoofsController < ApplicationController
     @woofupdate_where = pageDetails[:woofupdate_where]
     @breedappt_when = pageDetails[:breedappt_when]
     @breedappt_where = pageDetails[:breedappt_where]
+    @breedapptconfirmed = pageDetails[:breedapptconfirmed]
+    @walkdate_when = pageDetails[:walkdate_when]
+    @walkdate_where = pageDetails[:walkdate_where]
+    @walkdateconfirmed = pageDetails[:walkdateconfirmed]
 #binding.pry    
     render pageDetails[:pageToRender]
   end

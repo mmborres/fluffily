@@ -37,6 +37,9 @@ gem 'lolcommits', '~> 0.12.1'
 #gem 'sugarpaccione', '~> 0.1.0'
 gem 'execute_sql'
 #gem 'activesupport-core-ext', '~> 4.0', '>= 4.0.0.3'
+#gem 'random-word', '~> 1.3'
+gem 'spicy-proton', '~> 2.1', '>= 2.1.1'
+#gem 'Magic8Ball', '~> 0.0.6'
 # CUSTOM gems
 
 # Reduces boot times through caching; required in config/boot.rb

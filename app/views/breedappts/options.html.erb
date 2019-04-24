@@ -17,8 +17,10 @@
 </ul>
 <% else %>
 <h1>Please confirm Woof-up Date</h1>
+<div class="divflex">
 <div class="imgoverlay"><%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @currentDog_name %>&hearts;</div></div>
 <div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog_name%>&hearts;</div></div>
+</div>
 <p class="pLabel">
 <br>
 <b>WOOF-UP DATE DETAILS</b>
@@ -28,7 +30,10 @@ When: <%= @woofupdate_when %>
 Where: <%= @woofupdate_where %>
 <br>&nbsp;
 </p>
-<%= link_to 'Confirm Woof-up Date', "/woofupdates/confirm/#{@woof_id}" %>
+<!-- %= link_to 'Confirm Woof-up Date', "/woofupdates/confirm/#{@woof_id}" % -->
+<form action="/woofupdates/confirm/<%=@woof_id%>">
+    <button>Confirm Woof-up Date</button>
+</form>
 <% end %>
 
 <br><br>

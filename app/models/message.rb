@@ -54,4 +54,13 @@ class Message < ApplicationRecord
         }
     end
 
+
+
+    public 
+    def getPickupLine
+        str = "Hi there, #{ Spicy::Proton.adjective } #{ Spicy::Proton.noun }"
+#binding.pry
+        return str
+    end
+        
 end

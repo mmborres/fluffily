@@ -1,0 +1,38 @@
+<h1><%= @heading %></h1>
+
+<h2><%= @subheading %></h2>
+
+<br>
+<!--
+<%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %>
+<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %>
+-->
+
+<div class="divflex">
+<div class="imgoverlay"><%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @currentDog_name %>&hearts;</div></div>
+<div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog_name %>&hearts;</div></div>
+</div>
+
+<p class="pLabel">
+<br>
+<b>DOG WALK DATE COMING UP!</b>
+<br>
+When: <%= @walkdate_when %>
+<br>
+Where: <%= @walkdate_where %>
+<br>&nbsp;
+</p>
+
+
+
+<%= link_to 'Edit Dog Walk Date', "/dogwalkdates/#{@currentDog_id}/edit/#{@woof_id}" %>
+
+<%= link_to 'Cancel Dog Walk Date', "/dogwalkdates/cancel/#{@woof_id}" %>
+
+<br><br>
+<%= link_to 'View or Send Messages', "/messages/#{@woof_id}/#{@currentDog_id}/message" %> 
+
+
+<br><br>
+<%= link_to 'Back to My Dogs', dogs_path %>
+

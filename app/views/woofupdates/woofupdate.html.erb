@@ -4,8 +4,9 @@
 <%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
 -->
 
-<div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %><div class="bottom-left">&hearts;<%= @dog.name%>&hearts;</div></div>
-
+<div class="divflex">
+<div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog_name%>&hearts;</div></div>
+</div>
 
 <br>
 
@@ -45,5 +46,5 @@
 <br>
 
 <br><br>
-<%= link_to 'Back', :back %>
+
 <%= link_to 'Back to My Dogs', dogs_path %>

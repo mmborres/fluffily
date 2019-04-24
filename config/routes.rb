@@ -41,6 +41,16 @@ Rails.application.routes.draw do
 
   get '/dogwalkdates/options' => 'dogwalkdates#dogwalkdate'
   get '/dogwalkdates/dogwalkdate' => 'dogwalkdates#dogwalkdate'
+  get '/dogwalkdates/:id/dogwalkdate/:woofid' => 'dogwalkdates#dogwalkdate'
+  get '/dogwalkdates/:id/setupdogwalkdate/:woofid' => 'dogwalkdates#setupdogwalkdate'
+  get '/dogwalkdates/reminder' => 'dogwalkdates#reminder'
+  get '/dogwalkdates/:id/edit/:woofid' => 'dogwalkdates#edit'
+  get '/dogwalkdates/:id/update/:woofid' => 'dogwalkdates#update'
+  get '/dogwalkdates/cancel/:woofid' => 'dogwalkdates#cancel'
+  get '/dogwalkdates/confirm/:woofid' => 'dogwalkdates#confirm'
+
+  get '/dogwalkdates/optionsdwonly' => 'dogwalkdates#dogwalkdate'
+
 
   get '/messages/:woofid/:id/message' => 'messages#woofmessage'
   get '/messages//message' => 'messages#woofmessage'

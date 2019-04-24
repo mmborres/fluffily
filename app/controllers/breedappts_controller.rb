@@ -11,7 +11,7 @@ class BreedapptsController < ApplicationController
   end
 
   def setupbreedappt
-binding.pry
+#binding.pry
     bp = Breedappt.new
     bp.setupBreedAppt params
     # new status "Breeding Appointment Reminder"
@@ -19,13 +19,13 @@ binding.pry
   end
 
   def reminder #from different route, take note
-binding.pry
+#binding.pry
     redirect_to dogs_path
   end
 
 
   def edit
-binding.pry
+#binding.pry
     @breedappt = Breedappt.find_by(woof_id: params[:woofid])
     @woof_id = params[:woofid]
     coupledogs = @breedappt.getBreedingDogs params[:id], @breedappt

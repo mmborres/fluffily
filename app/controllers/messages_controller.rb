@@ -1,11 +1,9 @@
 class MessagesController < ApplicationController
 
-
   def woofmessage
-    #first call to YES
-    @firstDisplay='yes'
 #binding.pry
     msg = Message.new
+    @randomText = msg.getPickupLine
     if params[:id].present?
       @currDogId = params[:id]
     end
@@ -24,10 +22,9 @@ class MessagesController < ApplicationController
   end
 
   def woofmessagesend
-    #first call to NO
-    @firstDisplay='no'
 #binding.pry
     msg = Message.new
+    #@randomText = msg.getPickupLine
     msg.saveMessage params[:woofid], params[:currentdogid], params[:message_text], params[:sender]
     @currDogId = params[:currentdogid]
     @woofid = params[:woofid]

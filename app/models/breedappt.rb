@@ -26,7 +26,7 @@ class Breedappt < ApplicationRecord
         if ( (id == woof.dog_accept_id) || (id == woof.dog_accept_id.to_s) )
             partnerDog = Dog.find woof.dog_request_id
         end
-binding.pry
+#binding.pry
         return partnerDog
     end
 
@@ -39,7 +39,7 @@ binding.pry
         if ( (id == breedappt.dog_accept_id) || (id == breedappt.dog_accept_id.to_s) )
             partnerDog = Dog.find breedappt.dog_request_id
         end
-binding.pry
+#binding.pry
         return partnerDog
     end
 
@@ -48,7 +48,7 @@ binding.pry
     def getWoofDogs (currentDog_id, woofid)
         currentDog = Dog.find currentDog_id
         #assume at this point the status is "Woof-up Expired"
-binding.pry
+#binding.pry
         woof = Woof.find woofid
         partnerDog = getPartnerDog currentDog_id, woof
         return {
@@ -68,7 +68,7 @@ binding.pry
         if ( (id == breedappt.dog_accept_id) || (id == breedappt.dog_accept_id.to_s) )
             partnerDog = Dog.find breedappt.dog_request_id
         end
-binding.pry
+#binding.pry
         return {
             :currentDog => currentDog,
             :partnerDog => partnerDog
@@ -77,7 +77,7 @@ binding.pry
 
     public 
     def setupBreedAppt params 
-binding.pry
+#binding.pry
         #Parameters {"breedappt"=>{"bdate"=>"2019-04-25", "place"=>"Sydney"}, 
         #"message_text"=>"Hi Chikadora, we've met before", "controller"=>"breedappts", "action"=>"setupbreedappt", "id"=>"26", "woofid"=>"13"}
         bdate = params[:breedappt][:bdate]
@@ -119,7 +119,7 @@ binding.pry
     def updateBreedappt (w, array)
         breedappt = w
         id = array[:id]
-binding.pry
+#binding.pry
         breedappt.update(:place => array[:breedappt][:place])
         breedappt.update(:breeddate => array[:breedappt][:breeddate])
         breedappt.update(:dog_request_id => id) #initiator
@@ -129,7 +129,7 @@ binding.pry
         breedappt.update(:dog_accept_id => partnerDogId)
 
         #messages
-binding.pry
+#binding.pry
         message_text = array[:message_text]
         if message_text.present?
             woof = Woof.find breedappt.woof_id
@@ -145,7 +145,7 @@ binding.pry
     public 
     def cancelBreedappt w
         breedappt = w
-binding.pry
+#binding.pry
         #status back to 
         newstatus = "Woof-up Expired"
         #dogs to same status
