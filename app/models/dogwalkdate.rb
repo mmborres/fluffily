@@ -36,7 +36,7 @@ class Dogwalkdate < ApplicationRecord
         #status both dogs set to Available
         #delete woofupdates
         #delete dogwalkdates
-        #do not delete breedappts
+        #do not delete breedappts, only unconfirmed ones
         
         woof = Woof.find woofid
         woof.update(:status => "Breakup")
@@ -54,6 +54,13 @@ class Dogwalkdate < ApplicationRecord
         dogwalkdate = Dogwalkdate.find_by(woof_id: woofid)
         if dogwalkdate != nil
             dogwalkdate.destroy
+        end
+
+        breedappt = Breedappt.find_by(woof_id: woofid)
+        if breedappt != nil
+            if breedappt.status != 'Confirmed'
+                breedappt.destroy
+            end
         end
     end
 

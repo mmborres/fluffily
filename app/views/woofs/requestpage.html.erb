@@ -13,19 +13,24 @@
 <br>
 
 <p class="pLabel">
+<br>
 <b>HOUSE RULES</b><br><br>
 
-The first woof-up needs an approval. Succeeding woof-ups like Dogwalk dates or Breeding appointment (can be set up once a year only) 
-need no approval anymore. Break-up is an option after the first woof-up, in case it doesn't work out. No approval needed for breakups. 
-Once you broke up with a dog, the dog won't show up in your matches anymore.
+The first woof-up needs an approval. 
+<br>Succeeding woof-ups like Dogwalk dates or Breeding appointment (can be set up once a year only) 
+<br>need no approval anymore. Break-up is an option after the first woof-up, 
+<br>in case it doesn't work out. No approval needed for breakups. 
+<br>Please note that information about Breeding Appointments 
+<br>that pushed through will be kept.
 
 <br><br>
-If the dog has an ongoing activity, you cannot delete the dog from the system. That's all. Good luck to you, 
-and <%=@mydog.name %> &hearts; <%= @dog.name %>!
+Lastly, if the dog has an ongoing activity, you cannot delete the dog from the system. 
+<br>That's all. Good luck to you, and<br>
+<%=@mydog.name %> <span style="color:red">&hearts;</span> <%= @dog.name %>!
 
 <br><br>
 <form action="/woofs/<%= @request_id %>/<%= @dog.id %>/create">
-Send Message:<br>
+Send Message: (saved in Messages)<br>
 <textarea rows = "5" cols = "78" name="message_text" id="message_text" 
 placeholder="Hi<%=@owner_name%>, I am hoping our dogs could have an initial meeting."></textarea>
 

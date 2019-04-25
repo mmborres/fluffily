@@ -69,9 +69,15 @@ class Dog < ApplicationRecord
     def getPartnerDog dog
 #binding.pry
         partnerDog = nil
-        wuf = Woof.find_by(status: dog.status)
+        wuf = Woof.find_by(status: dog.status, dog_request_id: dog.id)
         if wuf == nil
-            wuf = Woof.find_by(status: "Pending")
+            wuf = Woof.find_by(status: dog.status, dog_accept_id: dog.id)
+        end
+        if wuf == nil
+            wuf = Woof.find_by(status: "Pending", dog_request_id: dog.id)
+        end
+        if wuf == nil
+            wuf = Woof.find_by(status: "Pending", dog_accept_id: dog.id)
         end
 
         if wuf != nil
@@ -82,7 +88,9 @@ class Dog < ApplicationRecord
                 partnerDog = Dog.find wuf.dog_accept_id
             end
         end
+#binding.pry
         return partnerDog
     end
+
 
 end

@@ -40,6 +40,7 @@ gem 'execute_sql'
 #gem 'random-word', '~> 1.3'
 gem 'spicy-proton', '~> 2.1', '>= 2.1.1'
 #gem 'Magic8Ball', '~> 0.0.6'
+#gem 'jquery-rails'
 # CUSTOM gems
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -51,6 +52,7 @@ group :development, :test do
 end
 
 gem 'listen', '>= 3.0.5', '< 3.2'
+#gem 'pry-rails'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

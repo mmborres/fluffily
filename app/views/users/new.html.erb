@@ -10,12 +10,12 @@
 <%= form_for @user do |f| %>
     <%= f.label :email %><br>
     <%= f.email_field :email, :required => true %><br>
-    <%= f.label :dob, "Date of Birth", :placeholder => 'YYYY-MM-DD' %><br>
-    <%= f.text_field :dob, :required => true %><br>
+    <%= f.label :dob, "Date of Birth" %><br>
+    <%= f.text_field :dob, :placeholder => 'YYYY-MM-DD', :required => true %><br>
 
     <%= f.label :password %><br>
-    <%= f.password_field :password %><br>
+    <%= f.password_field :password, :required => true  %><br>
     <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %><br><br>
-    <%= f.submit "Sign Up" %><br>
+    <%= f.password_field :password_confirmation, :required => true  %><br><br>
+    <%= f.submit "Sign Up", :class => 'button'  %><br>
 <% end %>

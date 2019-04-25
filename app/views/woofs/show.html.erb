@@ -4,20 +4,21 @@
 <%if @dog.image.present? %><%= image_tag @dog.image, :class => 'feature' %><% end %>
 --->
 
-<div class="imgoverlay"><%if @dog.image.present? %><%= image_tag @dog.image, :class => 'feature' %><% end %><div class="bottom-left">&hearts;<%= @dog.name%>&hearts;</div></div>
-
+<div class="divflex">
+<div class="imgoverlay"><%if @dog.image.present? %><%= image_tag @dog.image, :class => 'feature' %><% end %><div class="bottom-left">&hearts;<%= @dog.name%>&hearts;<br><%= @dog.sex%>, <%= @dog.color%> <%= @dog.breed%></div></div>
+</div>
 
 <p class="pLabel">
-
-<%= @dog.name %> is a <%= @dog.sex %> <%= @dog.breed %> born on <%= @dog.dob %>. <br>
+<br>
+<%= @dog.name %> is a <%= @dog.sex %> <%= @dog.breed %> born on <%= @dog.dob.strftime("%B %d, %Y") %>. <br>
 <% if @dog.sex == 'Female' %>She<% else %>He<% end %> is looking for dogs that are
-<%= @dog.pref_sex %> and of <%= @dog.pref_breed %> breed and <%= @dog.pref_color %> color 
-and lives in <%= @dog.pref_location %> part of Australia.
-
+<br><%= @dog.pref_sex %>, and of <%= @dog.pref_breed %> breed and <%= @dog.pref_color %> color 
+<br>and lives in <%= @dog.pref_location %> part of Australia.
+<br>&nbsp;
 
 </p>
 
-<%= link_to 'Want to Woof-up?', "/woofs/#{@request_id}/#{@dog.id}/requestpage" %>
+<%= link_to "Want to Woof-up with #{ @dog.name }?", "/woofs/#{@request_id}/#{@dog.id}/requestpage" %>
 
 <br><br>
 

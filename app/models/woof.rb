@@ -70,7 +70,7 @@ class Woof < ApplicationRecord
     def getRecentMessages messages
         if messages.length < 4
             messageArray = messages
-            return messageArray
+            return messageArray.reverse
         end
 #binding.pry
         last = messages.length-1
@@ -177,6 +177,25 @@ class Woof < ApplicationRecord
     end
 
     public
+    def checkEligibleBreedingAppt (id1, id2)
+        #dog_request_id | dog_accept_id |  status
+        bp = Breedappt.find_by(dog_request_id: id1, dog_accept_id: id2)
+        if bp == nil
+            bp = Breedappt.find_by(dog_request_id: id2, dog_accept_id: id1)
+        end
+binding.pry
+        if bp.upcase == "CONFIRMED"
+binding.pry
+            oneyearafterbreed = bp.breeddate >> 12
+            if (DateTime.now.to_date < oneyearafterbreed) 
+                return false
+            end
+        end
+        return true
+    end
+
+
+    public
     def getStatusPageDetails id
         dog = Dog.find id
         currstatus = dog.status
@@ -188,6 +207,7 @@ class Woof < ApplicationRecord
         woofupdateconfirmed = false
         breedapptconfirmed = false
         walkdateconfirmed = false
+        eligibleForBreedingAppt = true
 
         #Find Woof-up
         #  dog_request_id :integer
@@ -274,7 +294,8 @@ class Woof < ApplicationRecord
                 pageTitle = "Post Woof-up Options"
                 caption = "Your partner dog, #{rname}, is available for:"
                 wuf.update(:status => "Woof-up Expired")
-                renderPage = "/breedappts/options"                
+                renderPage = "/breedappts/options"      
+                eligibleForBreedingAppt = checkEligibleBreedingAppt dog.id, partnerDog.id     
             else
                 pageTitle = currstatus
                 caption = "Please make sure to get in touch with #{rname}'s owner to push through with the woof-up."
@@ -307,6 +328,7 @@ class Woof < ApplicationRecord
             if ( woofupdate.status.present? && !(woofupdate.status.empty?) && (woofupdate.status == "Confirmed") )
                     woofupdateconfirmed = true
             end
+            eligibleForBreedingAppt = checkEligibleBreedingAppt dog.id, partnerDog.id
 #binding.pry
             #LOOK UP Breeadappts table
             #if no entry for both dos as partner
@@ -339,6 +361,7 @@ class Woof < ApplicationRecord
 
             breedappt_when = bp.breeddate
             breedappt_where = bp.place
+            eligibleForBreedingAppt = checkEligibleBreedingAppt dog.id, partnerDog.id
 #binding.pry
             if expired
                 updateStatusPostWoofExpired wuf, "Breeding Appointment Expired"
@@ -374,6 +397,7 @@ class Woof < ApplicationRecord
             breedappt = Breedappt.find_by(woof_id: wuf.id)
             breedappt_when = breedappt.breeddate
             breedappt_where = breedappt.place
+            eligibleForBreedingAppt = checkEligibleBreedingAppt dog.id, partnerDog.id 
 #binding.pry
             if ( breedappt.status.present? && !(breedappt.status.empty?) && (breedappt.status == "Confirmed") )
                 breedapptconfirmed = true
@@ -408,6 +432,7 @@ class Woof < ApplicationRecord
 
             walkdate_when = dw.walkdate
             walkdate_where = dw.place
+            eligibleForBreedingAppt = checkEligibleBreedingAppt dog.id, partnerDog.id
 
             if expired
                 updateStatusPostWoofExpired wuf, "Dogwalk Date Expired"
@@ -445,6 +470,7 @@ class Woof < ApplicationRecord
             dw = Dogwalkdate.find_by woof_id: wuf.id 
             walkdate_when = dw.walkdate
             walkdate_where = dw.place
+            eligibleForBreedingAppt = checkEligibleBreedingAppt dog.id, partnerDog.id 
 #binding.pry
             if ( dw.status.present? && !(dw.status.empty?) && (dw.status == "Confirmed") )
                 walkdateconfirmed = true
@@ -479,7 +505,8 @@ class Woof < ApplicationRecord
             :breedappt_when => breedappt_when,
             :breedappt_where => breedappt_where,
             :walkdate_when => walkdate_when,
-            :walkdate_where => walkdate_where
+            :walkdate_where => walkdate_where,
+            :eligibleForBreedingAppt => eligibleForBreedingAppt
         }
     end #method
 end #class

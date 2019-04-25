@@ -11,7 +11,7 @@
 
 <h2><%= @subheading %></h2>
 <ul style="display:table; margin:0 auto; text-align: left;">
-<!-- li style="color: #c7cc95;"><%= link_to 'Set up Breeding Appointment (once a year only)', "/breedappts/#{@currentDog_id}/breedappt/#{@woof_id}" %></li -->
+<% if @checkEligibleBreedingAppt %><li style="color: #c7cc95;"><%= link_to 'Set up Breeding Appointment (once a year only)', "/breedappts/#{@currentDog_id}/breedappt/#{@woof_id}" %></li><% end %>
 <li style="color: #c7cc95;"><%= link_to 'Set up Dogwalk Date', "/dogwalkdates/#{@currentDog_id}/dogwalkdate/#{@woof_id}" %></li>
 <li style="color: #c7cc95;"><%= link_to 'Break up', "/dogwalkdates/#{@woof_id}/breakup" %></li>
 </ul>

@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat+Brush');
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+@import url('https://fonts.googleapis.com/css?family=Irish+Grover');
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif|Raleway:400,500,600,700');
+
+body {
+  /*https://media.giphy.com/media/d3MKb2hCZaNH63zq/giphy.gif*/
+  background-image: url("https://previews.123rf.com/images/damedeeso/damedeeso1407/damedeeso140700058/30507565-couple-of-dogs-in-love-very-close-together-lying-on-grass-in-the-park-with-sunglasses-chilling-out.jpg");
+  
+  /* Image is centered vertically and horizontally at all times */
+  background-position: top center;
+  
+  /* Image doesn't repeat */
+  background-repeat: no-repeat;
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+  background-attachment: fixed;
+  
+  /* This is what makes the background image rescale based on its container's size */
+  background-size: cover;
+}
+
+
+h1, h2 {
+  color: aliceblue;
+}
+
+label {
+  color: aliceblue;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+nav a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+div a {
+padding-left: 10px;
+padding-right: 10px;
+}
+
+
+a {
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+img {
+  width: 400px;
+  height: 400px;
+  max-width: 100%;
+  border: 6px solid #379200c7;
+  border-radius: 10%;
+}
+
+button {
+background-color:#022502;
+color: white;
+font-family: 'Raleway', sans-serif;
+font-size: 15px;
+border-radius: 0.5em;
+}
+
+.button {
+  background-color: #022502;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  border-radius: 0.5em;
+}
+
+.divdragula {
+  text-align: center;
+  display: inline-block;
+}
+
+.divflex {
+  text-align: center;
+  display: inline-flex;
+}
+
+.imgoverlay {
+  /*position: relative;
+  text-align: center;
+  color: white;*/
+  padding: 0;
+  margin: 0;
+  position: relative;
+  text-align: center;
+  color: black;
+}
+
+/* Bottom left text FOR RIGHT IMAGE*/
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  background-color: #7bd675d4;
+  padding: 2px;
+  border-radius: 0.5em;
+  font-weight: bold;
+}
+
+/* Bottom right text FOR LEFT IMAGE*/
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  background-color: #7bd675d4;
+  padding: 2px;
+  border-radius: 0.5em;
+  font-weight: bold;
+}
+
+p {
+  text-align: center;
+}
+
+table {
+  align-content: center;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.ptabitem {
+padding-left: 200px;
+}
+
+.tabitem {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.containermain {
+vertical-align: center;
+text-align: center;
+max-width: 960px; /* common value, responsive design */
+margin: 0 auto;
+
+padding: 1em; /*space inside the box*/
+ /*space outside the box*/
+border-bottom-left-radius: 1em;
+border-bottom-right-radius: 1em;
+background-color: #033a1ccf;
+}
+
+.boxchop {
+  object-fit: cover;
+  height: 100px;
+  width: 100px;
+ }
+
+.tableindex
+{
+  width:30%;
+}
+.tdindex
+{
+  height:40px;
+  }
+  
+.msgTable {
+  padding: 50px;
+  border-color: black;
+  border-style: double;
+}
+
+.messagetable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 2px solid black;
+}
+
+.messagetd {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid black;
+  color: black;
+}
+
+.messagetr:nth-child(even){background-color: #f2f2f2}
+.messagetr:nth-child(odd){background-color: #b9d8a883}
+
+.messageth {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid black;
+}
+
+/*.container {
+  max-width: 960px;
+  margin: 0 auto;
+}*/
+
+.thumb {
+  /*max-height: 10em;*/
+  object-fit: cover;
+  height: 150px;
+  width: 150px;
+}
+
+.currstatus {
+  /*max-height: 10em;*/
+  object-fit: cover;
+  height: 300px;
+  width: 250px;
+}
+
+.feature {
+  max-width: 100%;
+  object-fit: cover;
+  /*height: 100px;
+  width: 100px;*/
+}
+
+.featurenotify {
+  max-width: 150%;
+  object-fit: cover;
+  border: 6px solid #920f00;
+  /*height: 100px;
+  width: 100px;*/
+}
+
+
+.pLabel {
+background-color: #b2f2b7eb;
+border-bottom-left-radius: 1em;
+border-bottom-right-radius: 1em;
+color: #042b04;
+}
+
+.ptext {
+  color: #90d239;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+/**** modal ****/
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(255,100,100,0.92); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: black; /*#ccc;*/
+  padding: 10px 0;
+  height: 150px;
+  font-family: "Droid Serif", serif;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)}
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}

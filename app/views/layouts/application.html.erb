@@ -10,14 +10,16 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="containermain">
     
     <%= link_to 'Home', root_path %>
     <% if @current_user.present? %>
       <% if @current_user.admin? %>
         <%= link_to "All users", users_path %>
       <% end %>
-      <%= link_to "Sign Out #{ @current_user.email }", '/login/signout' %> 
+      <!-- <%= link_to "Sign Out #{ @current_user.email }", '/login/signout' %>  -->
+      <a href="/login/signout" onclick="localStoreReset();">Sign Out <%= @current_user.email %></a>
+
     <% else %>
       <%= link_to 'Sign Up', new_user_path %>
       <%= link_to 'Sign In', login_path %>
@@ -25,6 +27,22 @@
 
   
     <%= yield %>
+
+
+
+<script>
+
+const localStoreReset = function () {
+	if (typeof (Storage) !== "undefined") {
+		localStorage.setItem('showednotication', false);
+	}
+};
+
+</script>
+
   </div>
+
+
+
   </body>
 </html>

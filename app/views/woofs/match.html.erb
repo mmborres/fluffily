@@ -1,6 +1,6 @@
 <h1>Ready to Woof?</h1>
 
-<table>
+<!--table>
     <% @matches.each do |d| %>
     <tr>
     <td><%= link_to d.name, "/woofs/#{@request_id}/#{d.id}/show" %></td>
@@ -8,7 +8,29 @@
     <td><span class="ptext">Status:</span><br><%= link_to d.status, "/woofs/#{@request_id}/#{d.id}/show" %></td>
     </tr>
     <% end %>
-</table>
+</table-->
+
+<h2>Select a dog profile from the left and drag to the right.</h2>
+<div class="divdragula">
+<div class='parent'>
+    <div class='wrapper'>
+      <div id='left-rollbacks' class='container'>
+        <% @matches.each do |d| %>
+        <div id="/woofs/<%= @request_id %>/<%= d.id %>/requestpage" >
+        <%if d.image.present? %><%= link_to image_tag(d.image, :class => 'thumb'), "/woofs/#{@request_id}/#{d.id}/show" %><% end %>
+        <br><%= link_to d.name, "/woofs/#{@request_id}/#{d.id}/show" %>
+        <br><span class="ptext">Status:</span><br><%= link_to d.status, "/woofs/#{@request_id}/#{d.id}/show" %>
+        </div>
+        <% end %>
+      </div>
+      <div id='right-rollbacks' class='container'></div>
+    </div>
+</div>
+</div>
+
+<form id="linktoform" onsubmit="checkAction()" >
+    <button id="woofbutton">Send Woof Request</button>
+</form>
 
 <% if @matches.count == 0 %>
 <p class="pLabel"><br>
@@ -17,7 +39,43 @@ Sorry, no matches found. <br>Please update the Dog's Preferences <br>in the Edit
 </p>
 <br>
 <%= link_to "Edit #{@dog.name}'s Settings", edit_dog_path(@dog.id) %>
-<%end%>
 <br><br>
+<%end%>
+<br>
 
 <%= link_to 'Back to My Dogs', dogs_path %>
+
+
+
+<script>
+
+const checkAction = function () {
+    const children = document.getElementById("right-rollbacks").childElementCount;
+    if (children==1) {
+        const chid_url = document.getElementById("right-rollbacks").firstChild.id
+        document.getElementById("linktoform").action = chid_url;
+    } else {
+        alert("Please select a dog profile from the left and drag to the right.");
+        return false;
+    }
+};
+
+function $ (id) {
+  return document.getElementById(id);
+}
+
+dragula([$('left-rollbacks'), $('right-rollbacks')], { 
+  revertOnSpill: true,
+  copy: false,
+  accepts: function (el, target) {
+
+    const children = document.getElementById("right-rollbacks").childElementCount;
+    if (children>1) {
+        return false;
+    } 
+    return true;
+  }
+
+});
+
+</script>

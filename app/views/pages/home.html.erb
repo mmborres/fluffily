@@ -4,8 +4,15 @@
 <h2> Good to have you<% if ( session[:newuser] == false ) %> back<% end %>, <% if @current_user.name.present? %><%= @current_user.name %><% else %><%= @current_user.email %><% end %></h2>
     
 <% if @current_user.image.present? %><%= image_tag(@current_user.image, :class => 'thumb') %><% end %>
-<br><br>
+<br>
 
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption" ></div>
+      </div>
+<br>
     <% if @current_user.admin? %>
     <br><%= link_to 'View All Dogs', dogs_path %>
     <% end %>
@@ -13,11 +20,75 @@
         <%= link_to 'View All My Dogs', dogs_path %>
         <%= link_to 'Register New Dog', new_dog_path %>
     <% else %>
-        <p>Please register your dog to continue using the site.</p>
+        <h2>Please register your dog to continue using the site.</h2>
         <br><%= link_to 'Register My Dog', new_dog_path %>
     <% end %>
     <br><br><%= link_to 'Update My Profile', edit_user_path(@current_user.id) %>
+
+<input type="hidden" name="notifyImg" id="notifyImg" value="<%= @featureImage %>">
+<input type="hidden" name="notifyText" id="notifyText" value="<%= @featureText %>">
+
+
+
 <% else %>
 <h2>Please sign up or sign in to use the site.</h2>
 <% end %>
+
+<script>
+
+let notifyUser = true;
+
+const localStore = function () {
+	if (typeof (Storage) !== "undefined") {
+		localStorage.setItem('showednotication', true);
+	}
+};
+
+const retrieveLocalStore = function () {
+	if (typeof (Storage) !== "undefined") {
+		const showednotication = localStorage.getItem('showednotication');
+
+		if ( showednotication === "true" ) {
+            notifyUser = false; //already shown, no need to notify again
+        }
+    }
+};
+
+function $ (id) {
+  return document.getElementById(id);
+}
+
+const showNotification = function () {
+
+    retrieveLocalStore();
+
+    if (notifyUser && notifyImg.value != "" && notifyText.value != "") {
+        // Get the modal
+        const modal = $('myModal');
+
+        // Get the image and insert it inside the modal
+        const modalImg = $('img01');
+        const captionText = $('caption');
+
+        modal.style.display = "block";
+        modalImg.setAttribute("src", notifyImg.value);
+        modalImg.setAttribute("class", "featurenotify");
+        captionText.innerHTML = notifyText.value;
+
+        // Get the <span> element that closes the modal
+        const span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            //set localstore
+            localStore();
+            modal.style.display = "none";
+        }
+    }
+};
+
+showNotification();
+
+
+</script>
 

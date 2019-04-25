@@ -1,7 +1,10 @@
 <h1><%= @dog.name %> : <i><%= @dog.status %> </i></h1>
 
 <% if @dog.status == "Available" %>
-<%if @dog.image.present? %><%= image_tag @dog.image, :class => 'feature' %><% end %>
+<div class="divflex">
+<div class="imgoverlay"><%if @dog.image.present? %><%= image_tag @dog.image, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @dog.name %>&hearts;</div></div>
+</div>
+
 <% else %>
 <!--
 <%if @dog.image.present? %><%= image_tag @dog.image, :class => 'currstatus' %><% end %>
