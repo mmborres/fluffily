@@ -1,7 +1,7 @@
 <h1>Want to Woof-up with <%= @dog.name %>?</h1>
 
 <div class="divflex">
-<div class="imgoverlay"><%if @dog.image.present? %><%= image_tag @dog.image, :class => 'feature' %><% end %><div class="bottom-left">&hearts;<%= @dog.name%>&hearts;<br><%= @dog.sex%>, <%= @dog.color%> <%= @dog.breed%></div></div>
+<div class="imgoverlay"><%if @dog.image.present? %><%= image_tag @dog.image, :class => 'feature' %><% end %><div class="bottom-left">&hearts;<%= @dog.name%>&hearts;<br><%= @dog.sex%>, <%= @dog.color.capitalize %> <%= @dog.breed%></div></div>
 </div>
 
 <p class="pLabel">
@@ -18,4 +18,5 @@
 
 <br><br>
 
+<%= link_to 'Back to Matches', "/woofs/#{@request_id}" %>
 <%= link_to 'Back to My Dogs', dogs_path %>
