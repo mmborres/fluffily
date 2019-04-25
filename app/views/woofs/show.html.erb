@@ -1,9 +1,5 @@
 <h1>Want to Woof-up with <%= @dog.name %>?</h1>
 
-<!--
-<%if @dog.image.present? %><%= image_tag @dog.image, :class => 'feature' %><% end %>
---->
-
 <div class="divflex">
 <div class="imgoverlay"><%if @dog.image.present? %><%= image_tag @dog.image, :class => 'feature' %><% end %><div class="bottom-left">&hearts;<%= @dog.name%>&hearts;<br><%= @dog.sex%>, <%= @dog.color%> <%= @dog.breed%></div></div>
 </div>

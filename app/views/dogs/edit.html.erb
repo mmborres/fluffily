@@ -1,54 +1,7 @@
 <h1>Edit <%= @dog.name %></h1>
 
-<%= form_for @dog do |f| %>
-    <br><%= f.label :name %>
-    <br><%= f.text_field :name, :autofocus => true, :required => true, :maxlength => '50' %>
+<%= render :partial => 'form', :locals => {:display => (@dog.status == 'Available') , :buttonCustom => "Update Dog Settings"} %>
 
-    <br><br><%= f.label :dob, "Date of Birth" %>
-    <br><%= f.text_field :dob, :placeholder => 'YYYY-MM-DD', :class => 'fancy' %>
-
-    <br><br><%= f.label :sex %><br>
-    
-    <%= radio_button_tag 'dog[sex]', 'Male', checked = @booleanMale %>
-    <%= label_tag('dog[sex]', 'Male' ) %>
-    <%= radio_button_tag 'dog[sex]', 'Female', checked = @booleanFemale %>
-    <%= label_tag('dog[sex]', 'Female' ) %>
-
-    <br><br><%= f.label :breed %>
-    <br><%= f.text_field :breed, :required => true %>
-
-    <br><br><%= f.label :color %>
-    <br><%= f.text_field :color, :required => true %>
-
-    <br><br><%= f.label :image %>
-    <br><%= f.url_field :image, :required => true %>
-
-    <br><br><%= f.label :location %> (in Australia only)
-    <br><%= f.text_field :location, :required => true %>
-
-<% if @dog.status == 'Available' %>
-    <br><br>Looking for Dogs that are: 
-
-    <br><br><%= f.label :pref_sex, "Preferred Sex" %><br>
-    
-    <%= radio_button_tag 'dog[pref_sex]', 'Male', checked = @booleanMalepref_sex %>
-    <%= label_tag('dog[pref_sex]', 'Male' ) %>
-    <%= radio_button_tag 'dog[pref_sex]', 'Female', checked = @booleanFemalepref_sex %>
-    <%= label_tag('dog[pref_sex]', 'Female' ) %>
-
-    <br><br><%= f.label :pref_breed, "Preferred Breed" %>
-    <br><%= f.text_field :pref_breed, :placeholder => 'Any' %>
-
-    <br><br><%= f.label :pref_color, "Preferred Color" %>
-    <br><%= f.text_field :pref_color, :placeholder => 'Any' %>
-
-    <br><br><%= f.label :pref_location, "Preferred Location" %> (in Australia only)
-    <br><%= f.text_field :pref_location, :placeholder => 'Any' %>
-<% end %>
-
-    <br><br>
-    <%= f.submit "Update Dog Settings", :class => 'button' %>
-<% end %>
 
 <br><br>
 

@@ -24,7 +24,6 @@ class MessagesController < ApplicationController
   def woofmessagesend
 #binding.pry
     msg = Message.new
-    #@randomText = msg.getPickupLine
     msg.saveMessage params[:woofid], params[:currentdogid], params[:message_text], params[:sender]
     @currDogId = params[:currentdogid]
     @woofid = params[:woofid]

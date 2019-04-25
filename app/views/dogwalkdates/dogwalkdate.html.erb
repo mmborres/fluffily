@@ -1,8 +1,5 @@
 <h1>Set up Dogwalk Date</h2>
-<!--
-<%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %>
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %>
--->
+
 <div class="divflex">
 <div class="imgoverlay"><%if @currentDog.image.present? %><%= image_tag @currentDog.image, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @currentDog.name %>&hearts;</div></div>
 <div class="imgoverlay"><%if @partnerDog.image.present? %><%= image_tag @partnerDog.image, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog.name%>&hearts;</div></div>
@@ -11,13 +8,13 @@
 <br>&nbsp;
 <form action="/dogwalkdates/<%= @currentDog.id %>/setupdogwalkdate/<%= @woof_id %>" class="pLabel">
   <br>When?<br>
-  <input type="date" name="dogwalkdate[bdate]" id="dogwalkdate[bdate]">
+  <input type="date" name="dogwalkdate[bdate]" id="dogwalkdate[bdate]" required>
   <br><br>
   Where?<br>
-  <input type="text" name="dogwalkdate[place]" id="dogwalkdate[place]">
+  <input type="text" name="dogwalkdate[place]" id="dogwalkdate[place]" required size="100">
   <br><br>
   Add Notes: (will be saved in the Messages)<br>
-  <textarea rows = "5" cols = "78" name="message_text" id="message_text"></textarea>
+  <textarea rows = "5" cols = "78" name="message_text" id="message_text">Hi, Please call me at this number if you wish:</textarea>
   <br><br>
   <button>Set it up!</button>
   <br>&nbsp;

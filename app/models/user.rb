@@ -75,7 +75,7 @@ class User < ApplicationRecord
             image = dogsArray[0][:image]
             text = getText dogsArray[0][:status], dogsArray[0][:name]
         else
-            rid = rand dogsArray.length
+            rid = rand dogsArray.length #pick up a dog to feature in notifications
             #featured dog is dogsArray[rid]
             image = dogsArray[rid][:image]
             text = getText dogsArray[rid][:status], dogsArray[rid][:name]

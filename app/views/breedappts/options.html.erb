@@ -1,9 +1,6 @@
 <%if @woofupdateconfirmed %>
 <h1><%= @heading %></h1>
-<!--
-<%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %>
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %>
--->
+
 <div class="divflex">
 <div class="imgoverlay"><%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @currentDog_name %>&hearts;</div></div>
 <div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog_name%>&hearts;</div></div>
@@ -11,10 +8,11 @@
 
 <h2><%= @subheading %></h2>
 <ul style="display:table; margin:0 auto; text-align: left;">
-<% if @checkEligibleBreedingAppt %><li style="color: #c7cc95;"><%= link_to 'Set up Breeding Appointment (once a year only)', "/breedappts/#{@currentDog_id}/breedappt/#{@woof_id}" %></li><% end %>
+    <% if @checkEligibleBreedingAppt %><li style="color: #c7cc95;"><%= link_to 'Set up Breeding Appointment (once a year only)', "/breedappts/#{@currentDog_id}/breedappt/#{@woof_id}" %></li><% end %>
 <li style="color: #c7cc95;"><%= link_to 'Set up Dogwalk Date', "/dogwalkdates/#{@currentDog_id}/dogwalkdate/#{@woof_id}" %></li>
 <li style="color: #c7cc95;"><%= link_to 'Break up', "/dogwalkdates/#{@woof_id}/breakup" %></li>
 </ul>
+
 <% else %>
 <h1>Please confirm Woof-up Date</h1>
 <div class="divflex">
@@ -25,12 +23,11 @@
 <br>
 <b>WOOF-UP DATE DETAILS</b>
 <br>
-When: <%= @woofupdate_when %>
+When: <%= @woofupdate_when.strftime("%B %d, %Y") %>
 <br>
 Where: <%= @woofupdate_where %>
 <br>&nbsp;
 </p>
-<!-- %= link_to 'Confirm Woof-up Date', "/woofupdates/confirm/#{@woof_id}" % -->
 <form action="/woofupdates/confirm/<%=@woof_id%>">
     <button>Confirm Woof-up Date</button>
 </form>

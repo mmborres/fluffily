@@ -1,5 +1,6 @@
 <h1>Ready to Woof?</h1>
 
+<!-- WITHOUT DRAGULA -->
 <!--table>
     <% @matches.each do |d| %>
     <tr>
@@ -9,6 +10,8 @@
     </tr>
     <% end %>
 </table-->
+
+<% if @matches.count > 0 %>
 
 <h2>Select a dog profile from the left and drag to the right.</h2>
 <div class="divdragula">
@@ -26,13 +29,19 @@
       <div id='right-rollbacks' class='container'></div>
     </div>
 </div>
+Only one dog profile is progressed here. 
+      Put the dog profile back to the left 
+      <br>if you decided not to push through 
+      and put another dog profile in.
+      <br>Once done, click on the 'Ready to Woof!'
+      button below. <br>&nbsp;
 </div>
 
 <form id="linktoform" onsubmit="checkAction()" >
-    <button id="woofbutton">Send Woof Request</button>
+    <button id="woofbutton">Ready to Woof!</button>
 </form>
 
-<% if @matches.count == 0 %>
+<% else %>
 <p class="pLabel"><br>
 Sorry, no matches found. <br>Please update the Dog's Preferences <br>in the Edit Settings. 
 <br>&nbsp;

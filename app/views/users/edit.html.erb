@@ -2,10 +2,10 @@
 
 <%= form_for @user do |f| %>
     <br><%= f.label :name %>
-    <br><%= f.text_field :name, :autofocus => true, :required => true, :maxlength => '50' %>
+    <br><%= f.text_field :name, :autofocus => true, :required => true, :size => '50' %>
 
     <br><br><%= f.label :image %>
-    <br><%= f.url_field :image %>
+    <br><%= f.url_field :image, :size => '50' %>
 
     <br><br>
     <%= f.submit "Update Profile", :class => 'button' %>

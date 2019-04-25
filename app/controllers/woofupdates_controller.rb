@@ -1,7 +1,7 @@
 class WoofupdatesController < ApplicationController
   
   def woofupdate
-#everything is passes
+#everything is passed
   end
 
   def woof  
@@ -9,16 +9,27 @@ class WoofupdatesController < ApplicationController
     wuf = Woofupdate.new
     wuf.processApprove params[:woofid]
     #show set woofup
-    #@woofupdate = Woofupdate.new
     @currentDog_id = params[:id]
     @woof_id = params[:woofid]
+    woof = Woof.find @woof_id
+    @currentDog_img = wuf.getDogImage @currentDog_id
+    @currentDog_name = wuf.getDogName @currentDog_id
+    partnerId = wuf.getWoofUpPartnerDogId @currentDog_id, woof
+    @partnerDog_img = wuf.getDogImage partnerId
+    @partnerDog_name = wuf.getDogName partnerId
   end
 
   def edit 
     @woofupdate = Woofupdate.find_by(woof_id: params[:woofid])
     @currentDog_id = params[:id]
     @woof_id = params[:woofid]
-#binding.pry
+binding.pry
+    woof = Woof.find @woof_id
+    @currentDog_img = @woofupdate.getDogImage @currentDog_id
+    @currentDog_name = @woofupdate.getDogName @currentDog_id
+    partnerId = @woofupdate.getWoofUpPartnerDogId @currentDog_id, woof
+    @partnerDog_img = @woofupdate.getDogImage partnerId
+    @partnerDog_name = @woofupdate.getDogName partnerId
   end
 
   def update 

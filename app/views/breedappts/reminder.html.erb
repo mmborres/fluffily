@@ -2,12 +2,6 @@
 
 <h2><%= @subheading %></h2>
 
-<br>
-<!--
-<%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %>
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %>
--->
-
 <div class="divflex">
 <div class="imgoverlay"><%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @currentDog_name %>&hearts;</div></div>
 <div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog_name %>&hearts;</div></div>

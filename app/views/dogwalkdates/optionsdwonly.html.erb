@@ -1,9 +1,6 @@
 <%if @walkdateconfirmed %>
 <h1><%= @heading %></h1>
-<!--
-<%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %>
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %>
--->
+
 <div class="divflex">
 <div class="imgoverlay"><%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @currentDog_name %>&hearts;</div></div>
 <div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog_name%>&hearts;</div></div>
@@ -25,12 +22,12 @@
 <br>
 <b>DOG WALK DATE DETAILS</b>
 <br>
-When: <%= @walkdate_when %>
+When: <%= @walkdate_when.strftime("%B %d, %Y")  %>
 <br>
 Where: <%= @walkdate_where %>
 <br>&nbsp;
 </p>
-<!-- %= link_to 'Confirm Breeding Appointment', "/breedappts/confirm/#{@woof_id}" % -->
+
 <form action="/dogwalkdates/confirm/<%=@woof_id%>">
     <button>Confirm Dogwalk Date</button>
 </form>

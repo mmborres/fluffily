@@ -77,9 +77,6 @@ class Breedappt < ApplicationRecord
 
     public 
     def setupBreedAppt params 
-#binding.pry
-        #Parameters {"breedappt"=>{"bdate"=>"2019-04-25", "place"=>"Sydney"}, 
-        #"message_text"=>"Hi Chikadora, we've met before", "controller"=>"breedappts", "action"=>"setupbreedappt", "id"=>"26", "woofid"=>"13"}
         bdate = params[:breedappt][:bdate]
         bplace = params[:breedappt][:place]
         message_text = params[:message_text]

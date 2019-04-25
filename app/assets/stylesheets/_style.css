@@ -4,7 +4,6 @@
 @import url('https://fonts.googleapis.com/css?family=Droid+Serif|Raleway:400,500,600,700');
 
 body {
-  /*https://media.giphy.com/media/d3MKb2hCZaNH63zq/giphy.gif*/
   background-image: url("https://previews.123rf.com/images/damedeeso/damedeeso1407/damedeeso140700058/30507565-couple-of-dogs-in-love-very-close-together-lying-on-grass-in-the-park-with-sunglasses-chilling-out.jpg");
   
   /* Image is centered vertically and horizontally at all times */
@@ -30,6 +29,10 @@ label {
   color: aliceblue;
   font-size: 20px;
   font-weight: bolder;
+}
+
+nav {
+  float: right;
 }
 
 nav a {

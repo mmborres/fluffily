@@ -46,6 +46,7 @@
 
 
 <br><br>
+<%= link_to 'Back to Status Page', "/dogs/#{params[:id]}" %>
 <%= link_to 'Back to My Dogs', dogs_path %>
 
 
@@ -55,7 +56,7 @@
 meaning sender has been sending messages already
 and would be annoyed scrolling to the bottom of the page everytime*/
 
-function gotoBottom(){
+const gotoBottom = function(){
 
     const randomText = document.getElementById("randomText");
     const element = document.getElementById("message_text");
@@ -65,7 +66,7 @@ function gotoBottom(){
     document.getElementById("message_text").innerHTML = randomText.value;
  
     window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
- }
+ };
  
  gotoBottom();
  

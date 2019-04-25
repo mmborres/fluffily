@@ -1,7 +1,7 @@
 class DogwalkdatesController < ApplicationController
   
   def dogwalkdate
-binding.pry
+#binding.pry
     @woof_id = params[:woofid]
     currentDog_id = params[:id]
 
@@ -12,7 +12,7 @@ binding.pry
   end
 
   def setupdogwalkdate
-binding.pry
+#binding.pry
     bp = Dogwalkdate.new
     bp.setupDogwalkdate params
 
@@ -25,9 +25,10 @@ binding.pry
   end
 
   def edit
-binding.pry
-        @dogwalkdate = Dogwalkdate.find_by(woof_id: params[:woofid])
+#binding.pry
         @woof_id = params[:woofid]
+        @dogwalkdate = Dogwalkdate.where(woof_id: @woof_id).where(status: [nil, ""]).first #Dogwalkdate.find_by(woof_id: params[:woofid])
+binding.pry        
         coupledogs = @dogwalkdate.getWalkingDogs params[:id], @dogwalkdate
         @currentDog = coupledogs[:currentDog]
         @partnerDog = coupledogs[:partnerDog]
@@ -35,22 +36,23 @@ binding.pry
       end
     
       def update 
-binding.pry
-        dogwalkdate = Dogwalkdate.find_by(woof_id: params[:woofid])
+        @woof_id = params[:woofid]
+#binding.pry
+        dogwalkdate = Dogwalkdate.where(woof_id: @woof_id).where(status: [nil, ""]).first #Dogwalkdate.find_by(woof_id: params[:woofid])
         dogwalkdate.updateDogwalkdate dogwalkdate, params
     #binding.pry
         redirect_to dogs_path
       end
     
       def cancel
-        dogwalkdate = Dogwalkdate.find_by(woof_id: params[:woofid])
+        dogwalkdate = Dogwalkdate.where(woof_id: params[:woofid]).where(status: [nil, ""]).first #Dogwalkdate.find_by(woof_id: params[:woofid])
         dogwalkdate.cancelDogwalkdate dogwalkdate
     #binding.pry
         redirect_to dogs_path
       end
     
       def confirm
-        dogwalkdate = Dogwalkdate.find_by(woof_id: params[:woofid])
+        dogwalkdate = Dogwalkdate.where(woof_id: params[:woofid]).where(status: [nil, ""]).first #Dogwalkdate.find_by(woof_id: params[:woofid])
         dogwalkdate.update(:status => "Confirmed")
     #binding.pry
         redirect_to dogs_path

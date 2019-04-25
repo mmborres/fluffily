@@ -35,7 +35,7 @@ class BreedapptsController < ApplicationController
   end
 
   def update 
-binding.pry
+#binding.pry
     breedappt = Breedappt.find_by(woof_id: params[:woofid])
     breedappt.updateBreedappt breedappt, params
 #binding.pry

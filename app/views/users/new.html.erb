@@ -9,13 +9,15 @@
 
 <%= form_for @user do |f| %>
     <%= f.label :email %><br>
-    <%= f.email_field :email, :required => true %><br>
-    <%= f.label :dob, "Date of Birth" %><br>
-    <%= f.text_field :dob, :placeholder => 'YYYY-MM-DD', :required => true %><br>
+    <%= f.email_field :email, :required => true, :size => '50' %><br>
+
+    <%= f.label :dob, "Date of Birth (Must be 18 or older)" %><br>
+    <%= f.date_field :dob,  :required => true %><br>
 
     <%= f.label :password %><br>
-    <%= f.password_field :password, :required => true  %><br>
+    <%= f.password_field :password, :required => true , :size => '50' %><br>
+
     <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation, :required => true  %><br><br>
+    <%= f.password_field :password_confirmation, :required => true , :size => '50' %><br><br>
     <%= f.submit "Sign Up", :class => 'button'  %><br>
 <% end %>

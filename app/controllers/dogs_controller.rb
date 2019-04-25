@@ -1,6 +1,5 @@
 class DogsController < ApplicationController
   before_action :check_for_login, :only => [:new, :create, :show, :index, :edit, :update]
-  #before_action :check_for_admin, :only => [:index]
 
   def index
     if @current_user.admin?
@@ -24,7 +23,9 @@ class DogsController < ApplicationController
     if @dog.status.present?
       if @dog.status != "Available"
         @showmatches = false
-        @partnerDog = @dog.getPartnerDog @dog
+        array = @dog.getWoofPartnerDog @dog
+        @partnerDog = array[:partnerDog]
+        @woofid = array[:woofid]
       end
     end
   end

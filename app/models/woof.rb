@@ -177,14 +177,29 @@ class Woof < ApplicationRecord
     end
 
     public
+    def hasBreedingAppt (id1, id2)
+        hasbp = false
+        #dog_request_id | dog_accept_id |  status
+        bp = Breedappt.find_by(dog_request_id: id1, dog_accept_id: id2)
+        if bp == nil
+            bp = Breedappt.find_by(dog_request_id: id2, dog_accept_id: id1)
+        end
+#binding.pry
+        if (bp != nil) 
+            hasbp = true
+        end
+        return hasbp
+    end
+
+    public
     def checkEligibleBreedingAppt (id1, id2)
         #dog_request_id | dog_accept_id |  status
         bp = Breedappt.find_by(dog_request_id: id1, dog_accept_id: id2)
         if bp == nil
             bp = Breedappt.find_by(dog_request_id: id2, dog_accept_id: id1)
         end
-binding.pry
-        if bp.upcase == "CONFIRMED"
+#binding.pry
+        if (bp != nil) && (bp.status != nil) && (bp.status.upcase == "CONFIRMED")
 binding.pry
             oneyearafterbreed = bp.breeddate >> 12
             if (DateTime.now.to_date < oneyearafterbreed) 
@@ -276,6 +291,8 @@ binding.pry
             wuf = getWoof id, currstatus
 #binding.pry
             wufup = Woofupdate.find_by(woof_id: wuf.id)
+            woofupdate_when = wufup.woofdate
+            woofupdate_where = wufup.place
 #binding.pry
             expired = DateTime.now.to_date > wufup.woofdate
 #binding.pry
@@ -300,8 +317,7 @@ binding.pry
                 pageTitle = currstatus
                 caption = "Please make sure to get in touch with #{rname}'s owner to push through with the woof-up."
                 renderPage = "/woofupdates/setupwoofup" 
-                woofupdate_when = wufup.woofdate
-                woofupdate_where = wufup.place
+                
             end
         end
 #binding.pry
@@ -418,9 +434,10 @@ binding.pry
 
             wuf = getWoof id, currstatus
 
-            dw = Dogwalkdate.find_by woof_id: wuf.id 
-            expired = DateTime.now.to_date > dw.walkdate
-
+            dw = Dogwalkdate.where(woof_id: wuf.id).where(status: [nil, ""])
+binding.pry
+            expired = DateTime.now.to_date > dw[0][:walkdate]
+binding.pry
             partnerDog = getWoofPartnerDog id, wuf
             messageArray = getRecentMessages wuf.messages
             partnerDog_id = partnerDog.id
@@ -430,15 +447,21 @@ binding.pry
                 rname = rname.capitalize
             end
 
-            walkdate_when = dw.walkdate
-            walkdate_where = dw.place
+            walkdate_when = dw[0][:walkdate]
+            walkdate_where = dw[0][:place]
             eligibleForBreedingAppt = checkEligibleBreedingAppt dog.id, partnerDog.id
-
+            hasBAppt = hasBreedingAppt dog.id, partnerDog.id
+binding.pry
             if expired
                 updateStatusPostWoofExpired wuf, "Dogwalk Date Expired"
                 pageTitle = "More Woof-up Options"
                 caption = "Your partner dog, #{rname}, is available for:"
-                renderPage = "/dogwalkdates/options"                
+                
+                #if hasBAppt
+                #    renderPage = "/dogwalkdates/options"  
+                #else
+                    renderPage = "/dogwalkdates/optionsdwonly" 
+                #end             
             else
                 pageTitle = currstatus
                 caption = "Please make sure to get in touch with #{rname}'s owner to push through with the dogwalk date."
@@ -467,15 +490,24 @@ binding.pry
             messageArray = getRecentMessages wuf.messages
             partnerDog_id = partnerDog.id
 
-            dw = Dogwalkdate.find_by woof_id: wuf.id 
-            walkdate_when = dw.walkdate
-            walkdate_where = dw.place
-            eligibleForBreedingAppt = checkEligibleBreedingAppt dog.id, partnerDog.id 
-#binding.pry
-            if ( dw.status.present? && !(dw.status.empty?) && (dw.status == "Confirmed") )
-                walkdateconfirmed = true
+            eligibleForBreedingAppt = checkEligibleBreedingAppt dog.id, partnerDog.id
+            dw = Dogwalkdate.where(woof_id: wuf.id).where(status: [nil, ""]).first #Dogwalkdate.find_by woof_id: wuf.id 
+            if dw == nil #has status already
+                #try again
+                #dw = Dogwalkdate.where(woof_id: wuf.id).where(status: "Confirmed").first
+                #if dw != nil
+                    walkdateconfirmed = true
+                #end
+            else
+                walkdate_when = dw.walkdate
+                walkdate_where = dw.place
             end
+            
 #binding.pry
+            #if ( dw.status.present? && !(dw.status.empty?) && (dw.status == "Confirmed") )
+            #    walkdateconfirmed = true
+            #end
+binding.pry
             renderPage = "/dogwalkdates/optionsdwonly" 
 
         end

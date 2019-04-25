@@ -1,9 +1,5 @@
 <h1><%= @heading %></h1>
 
-<!--
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %>
--->
-
 <div class="divflex">
 <div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'feature' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog_name%>&hearts;</div></div>
 </div>
@@ -12,19 +8,13 @@
 
 <h2><%= @subheading %></h2>
 
-
 <% if @currentStatus.include? "Pending" %><%= link_to "Approve?", "/woofupdates/#{@currentDog_id}/woof/#{@woof_id}" %><% end %>
 
 <br>
 
-
 <%= link_to "Withdraw Woof-up?", "/woofupdates/withdraw/#{@woof_id}" %>
 
 <br><br>
-
-
-
-
 
 <table class="messagetable">
 <% i = 0 %>

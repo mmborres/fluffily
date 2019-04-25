@@ -1,8 +1,5 @@
 <h1>Update Breeding Appointment</h1>
-<!--
-<%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %>
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %>
--->
+
 <div class="divflex">
 <div class="imgoverlay"><%if @currentDog.image.present? %><%= image_tag @currentDog.image, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @currentDog.name %>&hearts;</div></div>
 <div class="imgoverlay"><%if @partnerDog.image.present? %><%= image_tag @partnerDog.image, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog.name%>&hearts;</div></div>
@@ -11,13 +8,13 @@
 <br>&nbsp;
 <form action="/breedappts/<%= @currentDog.id %>/update/<%= @woof_id %>" class="pLabel">
   <br>When?<br>
-  <input type="date" name="breedappt[breeddate]" id="breedappt[breeddate]" value="<%if @breedappt.breeddate.present? %><%=@breedappt.breeddate%><% end %>">
+  <input type="date" name="breedappt[breeddate]" id="breedappt[breeddate]" value="<%if @breedappt.breeddate.present? %><%=@breedappt.breeddate%><% end %>" required>
   <br><br>
   Where?<br>
-  <input type="text" name="breedappt[place]" id="breedappt[place]" value="<%if @breedappt.place.present? %><%=@breedappt.place%><% end %>">
+  <input type="text" name="breedappt[place]" id="breedappt[place]" value="<%if @breedappt.place.present? %><%=@breedappt.place%><% end %>" required>
   <br><br>
   Add Notes: (will be saved in the Messages)<br>
-  <textarea rows = "5" cols = "78" name="message_text" id="message_text" placeholder="Hi, Please call me at this number if you wish: "></textarea>
+  <textarea rows = "5" cols = "78" name="message_text" id="message_text">Hi, please see changes to the schedule.</textarea>
   <br><br>
   <button>Update Breeding Appointment</button>
   <br>&nbsp;

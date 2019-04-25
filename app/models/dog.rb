@@ -66,7 +66,7 @@ class Dog < ApplicationRecord
     end
 
     public 
-    def getPartnerDog dog
+    def getWoofPartnerDog dog
 #binding.pry
         partnerDog = nil
         wuf = Woof.find_by(status: dog.status, dog_request_id: dog.id)
@@ -89,7 +89,10 @@ class Dog < ApplicationRecord
             end
         end
 #binding.pry
-        return partnerDog
+        return {
+            :partnerDog => partnerDog,
+            :woofid => wuf.id
+        }
     end
 
 

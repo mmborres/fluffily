@@ -1,29 +1,24 @@
 <h1>Setup the First Woof-up Date</h1>
-<!--
-<%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %>
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %>
--->
+
 <div class="divflex">
-<div class="imgoverlay"><%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @mydog.name %>&hearts;</div></div>
-<div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @dog.name%>&hearts;</div></div>
+<div class="imgoverlay"><%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @currentDog_name %>&hearts;</div></div>
+<div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog_name%>&hearts;</div></div>
 </div>
 
 <form action="/woofupdates/<%= @currentDog_id %>/setupwoofup/<%= @woof_id %>" class="pLabel">
   <br>When?<br>
-  <input type="date" name="woofupdate[woofdate]" id="woofupdate[woofdate]">
+  <input type="date" name="woofupdate[woofdate]" id="woofupdate[woofdate]" required>
   <br><br>
   Where?<br>
-  <input type="text" name="woofupdate[place]" id="woofupdate[place]">
+  <input type="text" name="woofupdate[place]" id="woofupdate[place]" required size="100">
   <br><br>
   Add Notes: (will be saved in the Messages)<br>
-  <textarea rows = "5" cols = "78" name="message_text" id="message_text" 
-  placeholder="Hi, I hope to set up an initial meeting for our dogs."></textarea>
+  <textarea rows = "5" cols = "78" name="message_text" id="message_text">Hi, I hope to set up an initial meeting for our dogs.</textarea>
   <br><br>
   <button>Set it up!</button>
   <br>&nbsp;
 </form> 
 
 <br><br>
-<!-- 
-<%= link_to 'Back', :back %> --->
+
 <%= link_to 'Back to My Dogs', dogs_path %>

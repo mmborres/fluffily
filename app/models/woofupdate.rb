@@ -22,6 +22,12 @@ class Woofupdate < ApplicationRecord
         return dog.image
     end
 
+    public 
+    def getDogName id 
+        dog = Dog.find id
+        return dog.name
+    end
+
     public
     def processWithdraw woofid 
 #binding.pry
@@ -93,7 +99,7 @@ class Woofupdate < ApplicationRecord
         woofupdate.update(:dog_accept_id => partnerDogId)
 
         #messages
-binding.pry
+#binding.pry
         woof = Woof.find woofupdate.woof_id
         message = Message.new
         message.sender_id = id #initiator
@@ -106,7 +112,7 @@ binding.pry
     public 
     def cancelWoofUp w
         woofupdate = w
-binding.pry
+#binding.pry
         #status back to 
         newstatus = "Set Woof-up"
         #dogs to same status
@@ -125,11 +131,12 @@ binding.pry
     public 
     def getWoofUpPartnerDogId (id, wuf)
         partnerDogId = 0
-        if id == wuf.dog_accept_id
+        if id == wuf.dog_accept_id.to_s
             partnerDogId = wuf.dog_request_id
         else
             partnerDogId = wuf.dog_accept_id
         end
+binding.pry
         return partnerDogId
     end
 end

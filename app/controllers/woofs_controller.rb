@@ -55,8 +55,8 @@ class WoofsController < ApplicationController
     @walkdate_when = pageDetails[:walkdate_when]
     @walkdate_where = pageDetails[:walkdate_where]
     @walkdateconfirmed = pageDetails[:walkdateconfirmed]
-    @checkEligibleBreedingAppt = pageDetails[:checkEligibleBreedingAppt]
-#binding.pry    
+    @checkEligibleBreedingAppt = pageDetails[:eligibleForBreedingAppt]
+binding.pry    
     render pageDetails[:pageToRender]
   end
 

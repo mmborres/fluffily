@@ -1,22 +1,19 @@
 <h1>Update Woof-up Date</h1>
-<!--
-<%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %>
-<%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %>
--->
+
 <div class="divflex">
-<div class="imgoverlay"><%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @mydog.name %>&hearts;</div></div>
-<div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @dog.name%>&hearts;</div></div>
+<div class="imgoverlay"><%if @currentDog_img.present? %><%= image_tag @currentDog_img, :class => 'currstatus' %><% end %><div class="bottom-right">&hearts;<%= @currentDog_name %>&hearts;</div></div>
+<div class="imgoverlay"><%if @partnerDog_img.present? %><%= image_tag @partnerDog_img, :class => 'currstatus' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog_name%>&hearts;</div></div>
 </div>
 
 <form action="/woofupdates/<%= @currentDog_id %>/update/<%= @woof_id %>" class="pLabel">
   <br>When?<br>
-  <input type="date" name="woofupdate[woofdate]" id="woofupdate[woofdate]" value="<%if @woofupdate.woofdate.present? %><%=@woofupdate.woofdate%><% end %>">
+  <input type="date" name="woofupdate[woofdate]" id="woofupdate[woofdate]" value="<%if @woofupdate.woofdate.present? %><%=@woofupdate.woofdate%><% end %>" required>
   <br><br>
   Where?<br>
-  <input type="text" name="woofupdate[place]" id="woofupdate[place]" value="<%if @woofupdate.place.present? %><%=@woofupdate.place%><% end %>">
+  <input type="text" name="woofupdate[place]" id="woofupdate[place]" value="<%if @woofupdate.place.present? %><%=@woofupdate.place%><% end %>" required size="100">
   <br><br>
   Add Notes: (will be saved in the Messages)<br>
-  <textarea rows = "5" cols = "78" name="message_text" id="message_text" placeholder="Hi, Please call me at this number if you wish: "></textarea>
+  <textarea rows = "5" cols = "78" name="message_text" id="message_text" >Hi, please see changes to the schedule.</textarea>
   <br><br>
   <button>Update Woof-up</button>
   <br>&nbsp;
