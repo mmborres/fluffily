@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get '/woofs/:id/:id2/show' => 'woofs#show'
   get '/woofs/:id/:id2/requestpage' => 'woofs#requestpage'
   get '/woofs/:id/:id2/create' => 'woofs#create'
+  get '/woofs/:id/changepref' => 'woofs#changepref'
+  patch '/woofs/:id/updatepref' => 'woofs#updatepref'
 
   get '/woofupdates/woofupdate' => 'woofupdates#woofupdate'
   get '/woofupdates/:id/woof/:woofid' => 'woofupdates#woof'

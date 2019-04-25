@@ -8,6 +8,23 @@ class WoofsController < ApplicationController
   #binding.pry
   end
 
+  def changepref
+    @dog = Dog.find params[:id]
+    @booleanMalepref_sex = ( @dog.pref_sex.upcase == "MALE" )
+    @booleanFemalepref_sex = ( @dog.pref_sex.upcase == "FEMALE" )
+  end
+
+  def updatepref
+#binding.pry
+    @dog = Dog.find params[:id]
+    @dog.update(:pref_sex => params[:dog][:pref_sex])
+    @dog.update(:pref_breed => params[:dog][:pref_breed])
+    @dog.update(:pref_color => params[:dog][:pref_color])
+    @dog.update(:pref_location => params[:dog][:pref_location])
+
+    redirect_to "/woofs/#{params[:id]}"
+  end
+
   def show
     @request_id = params[:id]
     #dog to show is params[:id2]
@@ -56,7 +73,7 @@ class WoofsController < ApplicationController
     @walkdate_where = pageDetails[:walkdate_where]
     @walkdateconfirmed = pageDetails[:walkdateconfirmed]
     @checkEligibleBreedingAppt = pageDetails[:eligibleForBreedingAppt]
-binding.pry    
+#binding.pry    
     render pageDetails[:pageToRender]
   end
 

@@ -36,21 +36,31 @@ Only one dog profile is progressed here.
       <br>Once done, click on the 'Ready to Woof!'
       button below. <br>&nbsp;
 </div>
-
-<form id="linktoform" onsubmit="checkAction()" >
+<br>
+<div class="divflex">
+<form id="linktoformPref" action="/woofs/<%= @dog.id %>/changepref">
+    <button id="prefbutton">Change Preferences?</button>
+</form>&nbsp;&nbsp;
+<form id="linktoform" onsubmit="checkActionWoof()" >
     <button id="woofbutton">Ready to Woof!</button>
 </form>
+</div>
 
 <% else %>
 <p class="pLabel"><br>
-Sorry, no matches found. <br>Please update the Dog's Preferences <br>in the Edit Settings. 
+Sorry, no matches found. <br>Please update the Dog's Preferences <br>to get better matches. 
 <br>&nbsp;
 </p>
 <br>
+<!--
 <%= link_to "Edit #{@dog.name}'s Settings", edit_dog_path(@dog.id) %>
+-->
+<form id="linktoformPref" action="/woofs/<%= @dog.id %>/changepref">
+    <button id="prefbutton">Change Preferences</button>
+</form>
 <br><br>
 <%end%>
-<br>
+<br><br>
 
 <%= link_to 'Back to My Dogs', dogs_path %>
 
@@ -58,7 +68,7 @@ Sorry, no matches found. <br>Please update the Dog's Preferences <br>in the Edit
 
 <script>
 
-const checkAction = function () {
+const checkActionWoof = function () {
     const children = document.getElementById("right-rollbacks").childElementCount;
     if (children==1) {
         const chid_url = document.getElementById("right-rollbacks").firstChild.id

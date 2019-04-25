@@ -1,0 +1,28 @@
+<%= form_for @dog, :url => {:action => "updatepref", :id => @dog.id} do |f| %>
+
+<% if display %>
+    <br>
+    <h2>Looking for Dogs that are: </h2>
+
+    <%= f.label :pref_sex, "Preferred Sex" %><br>
+    
+    <%= radio_button_tag 'dog[pref_sex]', 'Male', checked = @booleanMalepref_sex %>
+    <%= label_tag('dog[pref_sex]', 'Male' ) %>
+    <%= radio_button_tag 'dog[pref_sex]', 'Female', checked = @booleanFemalepref_sex %>
+    <%= label_tag('dog[pref_sex]', 'Female' ) %>
+
+    <br><br><%= f.label :pref_breed, "Preferred Breed" %>
+    <br><%= f.text_field :pref_breed, :placeholder => 'Any', :size => '50' %>
+
+    <br><br><%= f.label :pref_color, "Preferred Color" %>
+    <br><%= f.text_field :pref_color, :placeholder => 'Any', :size => '50' %>
+
+    <br><br><%= f.label :pref_location, "Preferred Location" %> (in Australia only)
+    <br><%= f.text_field :pref_location, :placeholder => 'Any', :size => '50' %>
+<% end %>
+
+    <br><br>
+    <%= f.submit buttonCustom, :class => 'button' %>
+
+<% end %>
+

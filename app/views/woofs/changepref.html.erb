@@ -1,0 +1,8 @@
+<h1>Change Prefernces for <%= @dog.name %></h1>
+
+<%= render :partial => 'form', :locals => {:display => true , :buttonCustom => "Update Dog Settings"} %>
+
+
+<br><br>
+
+<%= link_to 'Back to My Dogs', dogs_path %>
