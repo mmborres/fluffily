@@ -34,7 +34,7 @@ Kidding aside, let's go technical now.
 
 ### Fluffily Story Board: ###
 
-  * User signs up and registers a Dog (or many Dogs)
+  * User signs up (must be 18 years or older) and registers a Dog (or many Dogs)
   * User views the matches for the Dog and progress from there. User can choose preferences for the Dog matches.
   (This point forward let's take the view of the Dog.)
   * Dog A initiates Woof-up, sends Woof Request. Dog A status: Woof-up Request Sent, Dog B status: Woof-up Pending Approval
