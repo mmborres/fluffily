@@ -87,3 +87,5 @@ This web application uses mainly Ruby on Rails with PostgreSQL as storage. Of co
   * Google Maps for Woof-ups
 
 ![Fluffily Mobile](Screenshot_2019-04-26-10-38-38.png "Mobile Version")
+
+![Fluffily Mobile](Screen%20Shot%202019-04-27%20at%203.43.27%20am.png "Breakup")
