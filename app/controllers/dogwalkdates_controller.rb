@@ -28,7 +28,7 @@ class DogwalkdatesController < ApplicationController
 #binding.pry
         @woof_id = params[:woofid]
         @dogwalkdate = Dogwalkdate.where(woof_id: @woof_id).where(status: [nil, ""]).first #Dogwalkdate.find_by(woof_id: params[:woofid])
-binding.pry        
+#binding.pry        
         coupledogs = @dogwalkdate.getWalkingDogs params[:id], @dogwalkdate
         @currentDog = coupledogs[:currentDog]
         @partnerDog = coupledogs[:partnerDog]

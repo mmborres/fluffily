@@ -200,7 +200,7 @@ class Woof < ApplicationRecord
         end
 #binding.pry
         if (bp != nil) && (bp.status != nil) && (bp.status.upcase == "CONFIRMED")
-binding.pry
+#binding.pry
             oneyearafterbreed = bp.breeddate >> 12
             if (DateTime.now.to_date < oneyearafterbreed) 
                 return false
@@ -435,9 +435,9 @@ binding.pry
             wuf = getWoof id, currstatus
 
             dw = Dogwalkdate.where(woof_id: wuf.id).where(status: [nil, ""])
-binding.pry
+#binding.pry
             expired = DateTime.now.to_date > dw[0][:walkdate]
-binding.pry
+#binding.pry
             partnerDog = getWoofPartnerDog id, wuf
             messageArray = getRecentMessages wuf.messages
             partnerDog_id = partnerDog.id
@@ -451,7 +451,7 @@ binding.pry
             walkdate_where = dw[0][:place]
             eligibleForBreedingAppt = checkEligibleBreedingAppt dog.id, partnerDog.id
             hasBAppt = hasBreedingAppt dog.id, partnerDog.id
-binding.pry
+#binding.pry
             if expired
                 updateStatusPostWoofExpired wuf, "Dogwalk Date Expired"
                 pageTitle = "More Woof-up Options"
@@ -507,7 +507,7 @@ binding.pry
             #if ( dw.status.present? && !(dw.status.empty?) && (dw.status == "Confirmed") )
             #    walkdateconfirmed = true
             #end
-binding.pry
+#binding.pry
             renderPage = "/dogwalkdates/optionsdwonly" 
 
         end

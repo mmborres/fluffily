@@ -136,7 +136,7 @@ class Woofupdate < ApplicationRecord
         else
             partnerDogId = wuf.dog_accept_id
         end
-binding.pry
+#binding.pry
         return partnerDogId
     end
 end

@@ -23,7 +23,7 @@ class WoofupdatesController < ApplicationController
     @woofupdate = Woofupdate.find_by(woof_id: params[:woofid])
     @currentDog_id = params[:id]
     @woof_id = params[:woofid]
-binding.pry
+#binding.pry
     woof = Woof.find @woof_id
     @currentDog_img = @woofupdate.getDogImage @currentDog_id
     @currentDog_name = @woofupdate.getDogName @currentDog_id
