@@ -1,8 +1,10 @@
 Fluffily Ever After: A Dating App for Dogs
 ============
 
-Live: [Fluffily](https://fluffily.herokuapp.com/)
+Deployed on Heroku: [Fluffily](https://fluffily.herokuapp.com/ "Live Demo")  
 ------------
+
+Please refer to Story Board below for how to use the app.
 
 ![Fluffily Dating App](Screen%20Shot%202019-04-25%20at%204.33.15%20pm.png "Dating App")
 
