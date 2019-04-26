@@ -84,4 +84,4 @@ This web application uses mainly Ruby on Rails with PostgreSQL as storage. Of co
   * Simplify Naviation
   * Implement triggers from DB to reload page i.e., Messenger, Push Notifications
 
-![Winnner](winner.png "When player wins a round")
+![Fluffily Mobile](Screenshot_2019-04-26-10-38-38.png "Mobile Version")
