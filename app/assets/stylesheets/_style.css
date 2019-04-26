@@ -87,9 +87,6 @@ border-radius: 0.5em;
 }
 
 .imgoverlay {
-  /*position: relative;
-  text-align: center;
-  color: white;*/
   padding: 0;
   margin: 0;
   position: relative;
@@ -196,38 +193,43 @@ background-color: #033a1ccf;
   border: 1px solid black;
 }
 
-/*.container {
-  max-width: 960px;
-  margin: 0 auto;
-}*/
-
 .thumb {
-  /*max-height: 10em;*/
   object-fit: cover;
   height: 150px;
   width: 150px;
 }
 
 .currstatus {
-  /*max-height: 10em;*/
   object-fit: cover;
   height: 300px;
   width: 250px;
 }
 
+.currstatustransparent {
+  object-fit: cover;
+  height: 300px;
+  width: 250px;
+  opacity: 0.9;
+}
+
+.brokenheart {
+  object-fit: cover;
+  height: 300px;
+  width: 400px;
+  opacity: 0.6;
+  border-radius: 0;
+  border: 0;
+}
+
 .feature {
   max-width: 100%;
   object-fit: cover;
-  /*height: 100px;
-  width: 100px;*/
 }
 
 .featurenotify {
   max-width: 150%;
   object-fit: cover;
   border: 6px solid #920f00;
-  /*height: 100px;
-  width: 100px;*/
 }
 
 

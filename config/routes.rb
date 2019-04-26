@@ -58,7 +58,7 @@ Rails.application.routes.draw do
   get '/messages/woofmessagesend' => 'messages#woofmessagesend'
   post '/messages/woofmessagesend' => 'messages#woofmessagesend'
 
-  get '/dogwalkdates/:woofid/breakup' => 'dogwalkdates#breakup'
+  get '/dogwalkdates/:woofid/:id/breakup' => 'dogwalkdates#breakup'
   get '/dogwalkdates/:woofid/breakup/confirm' => 'dogwalkdates#breakupconfirm'
 
 end

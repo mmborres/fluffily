@@ -68,6 +68,10 @@ class DogwalkdatesController < ApplicationController
     @woofid = params[:woofid]
     #get dogs details
     #page is rules for breakup
+    bp = Dogwalkdate.new
+    coupledogs = bp.getWoofDogs params[:id], @woofid
+    @currentDog = coupledogs[:currentDog]
+    @partnerDog = coupledogs[:partnerDog]
   end
 
   def breakupconfirm

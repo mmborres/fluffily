@@ -1,5 +1,15 @@
 <h1>Aww, Breakup for Real?</h1>
 
+<div style="position:relative">
+    <div class="divflex">
+        <div class="imgoverlay"><%if @currentDog.image.present? %><%= image_tag @currentDog.image, :class => 'currstatustransparent' %><% end %><div class="bottom-right">&hearts;<%= @currentDog.name %>&hearts;</div></div>
+        <div class="imgoverlay"><%if @partnerDog.image.present? %><%= image_tag @partnerDog.image, :class => 'currstatustransparent' %><% end %><div class="bottom-left">&hearts;<%= @partnerDog.name%>&hearts;</div></div>
+    </div>
+    <div style="position: absolute; left: 0; right: 0; top:0; margin: auto; ">
+        <%= image_tag "broken-heart.jpg", :class => 'brokenheart' %>
+    </div>
+</div>
+
 <h2>Breakup Rules</h2>
 
 <p class="pLabel">
