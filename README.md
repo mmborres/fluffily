@@ -83,5 +83,6 @@ This web application uses mainly Ruby on Rails with PostgreSQL as storage. Of co
   * Replace background image with a non-stock photo. It's so cute I could not let it go.
   * Simplify Naviation
   * Implement triggers from DB to reload page i.e., Messenger, Push Notifications
+  * Google Maps for Woof-ups
 
 ![Fluffily Mobile](Screenshot_2019-04-26-10-38-38.png "Mobile Version")
