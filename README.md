@@ -4,7 +4,9 @@ Fluffily Ever After: A Dating App for Dogs
 Live: [Fluffily](https://fluffily.herokuapp.com/)
 ------------
 
-![Fluffily DB](Fluffily.png "Fluffily Database Mapping")
+![Fluffily Dating App](Screen%20Shot%202019-04-25%20at%204.33.15%20pm.png "Dating App")
+
+![Fluffily Message Board](Screen%20Shot%202019-04-25%20at%204.36.04%20pm.png "Message Board")
 
 First and Foremost, why a Dating App for Dogs?
 ------------
@@ -15,6 +17,8 @@ Anyway, for someone who has not used dating apps ever, this project is a really 
 
 Kidding aside, let's go technical now.
 
+![Fluffily DB](Fluffily.png "Fluffily Database Mapping")
+
 ### Database Mapping Rules: ###
 
   * User can have many Dogs
@@ -22,7 +26,7 @@ Kidding aside, let's go technical now.
     * No room for cheating
     * Breakup with a fellow dog anytime
   * Woof has the IDs of the 2 woofed-up dogs and the recent status
-  * A woof can have
+  * A woof can have:
     * Messages
     * Woof-up Date
     * Breeding Appointments (ONCE a year only)
@@ -57,26 +61,27 @@ Kidding aside, let's go technical now.
     * Both dogs back to 'Available'
     * Dog can be deleted.
 
-![Play against peer](peerplay.png "Play against peer")
+![Fluffily Ready to Woof](Screen%20Shot%202019-04-26%20at%2010.09.34%20am.png "Ready to Woof?")
 
-![Play against AI](playagainstAI.png "Play against AI")
+![Fluffily Notify](Screen%20Shot%202019-04-25%20at%204.32.08%20pm.png "Notification")
 
 ### Technologies ###
 
-This web application uses mainly Ruby in Rails with PostgreSQL as storageHTML, CSS, Javascript and jQuery. 
+This web application uses mainly Ruby on Rails with PostgreSQL as storage. Of course, HTML, CSS and Javascript. Yeah!
 
-  * Front-end uses HTML utilising Google Fonts and Giphy images
-  * Styling and animations through CSS
-  * DOM manipulation using Javacript and jQuery
-  * Logic and back-end processing using Javascript utilising Data structures and Math library calls
-  * Semi-smart AI uses the Mini-Max Algorithm as basis
-  * Smart AI uses greedy strategy on top of the Mini-Max algorithm
-  * Windows Localstorage is fully supported
+  * Front-end uses HTML utilising Google Fonts and web-sourced images
+  * Styling and animations through CSS and Javacript
+  * Ruby on Rails: Logic/Back-end in Models and pre-display processing through Controllers. 
+     * Utilsed various Rails CRUD and direct SQL calls   
+  * Javascript + Windows LocalStorage used in Notifications
+  * Implemented the Drag and Drop API [Dragula](https://bevacqua.github.io/dragula/) as an alternative route to finding a match
+  * Gems: Execute_Sql, LolCommits, and Spicy-Proton
+  * Used Spicy-Proton gem to spice up random messages in the Messenger
   
 ### Wishlist ###
 
-  * Replace blinking winning row with SVG
-  * Implement Firebase or mult-player setup on a network
-  * Implement levels and scoring complexity
+  * Replace background image with a non-stock photo. It's so cute I could not let it go.
+  * Simplify Naviation
+  * Implement triggers from DB to reload page i.e., Messenger, Push Notifications
 
 ![Winnner](winner.png "When player wins a round")
