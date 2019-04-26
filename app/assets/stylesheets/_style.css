@@ -208,17 +208,17 @@ background-color: #033a1ccf;
 .currstatustransparent {
   object-fit: cover;
   height: 300px;
-  width: 250px;
-  opacity: 0.9;
+  width: 220px;
+  opacity: 1;
 }
 
 .brokenheart {
   object-fit: cover;
   height: 300px;
-  width: 400px;
+  width: 440px;
   opacity: 0.6;
-  border-radius: 0;
   border: 0;
+  border-radius: 5%;
 }
 
 .feature {
