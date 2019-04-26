@@ -73,6 +73,7 @@ This web application uses mainly Ruby on Rails with PostgreSQL as storage. Of co
   * Styling and animations through CSS and Javacript
   * Ruby on Rails: Logic/Back-end in Models and pre-display processing through Controllers. 
      * Utilsed various Rails CRUD and direct SQL calls   
+     * Custom Form Helpers
   * Javascript + Windows LocalStorage used in Notifications
   * Implemented the Drag and Drop API [Dragula](https://bevacqua.github.io/dragula/) as an alternative route to finding a match
   * Gems: Execute_Sql, LolCommits, and Spicy-Proton
