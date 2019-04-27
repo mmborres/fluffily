@@ -1,4 +1,4 @@
-Fluffily Ever After: A Dating App for Dogs
+Fluffily Ever After: *A Dating App for Dogs*
 ============
 
 Deployed on Heroku: [Fluffily](https://fluffily.herokuapp.com/ "Live Demo")  
@@ -38,7 +38,8 @@ Kidding aside, let's go technical now.
 
   * User signs up (must be 18 years or older) and registers a Dog (or many Dogs)
   * User views the matches for the Dog and progress from there. User can choose preferences for the Dog matches
-  (This point forward let's take the view of the Dog...)
+  
+  >>>> This point forward let's take the view of the Dog... 
   * Dog A initiates Woof-up, sends Woof Request. Dog A status: Woof-up Request Sent, Dog B status: Woof-up Pending Approval
     * Any of the Dogs can Withdraw at any time. Status set back to 'Available'
     * Dogs can send Messages to each other
@@ -69,15 +70,16 @@ Kidding aside, let's go technical now.
 
 ### Technologies ###
 
-This web application uses mainly Ruby on Rails with PostgreSQL as storage. Of course, HTML, CSS and Javascript. Yeah!
+This web application uses mainly Ruby on Rails with PostgreSQL as database. Of course, HTML, CSS and Javascript.
 
   * Front-end uses HTML utilising Google Fonts and web-sourced images
-  * Styling and animations through CSS and Javacript
+  * Styling and animations through CSS and Javascript
   * Ruby on Rails: Logic/Back-end in Models and pre-display processing through Controllers
      * Utilised various Rails CRUD and direct SQL calls   
      * Custom Form Helpers
-  * Javascript + Windows LocalStorage used in Notifications
-  * Implemented the Drag and Drop API [Dragula](https://bevacqua.github.io/dragula/) as an alternative route to finding a match
+     * (I did various kinds of calls, or approaches. Point is to use different Rails calls as practice. Direct SQL calls since it's cool to use vanilla SQL? Nah, it's more of a refresher for me, and I am enjoying it.)
+  * Javascript + Windows LocalStorage used in Notifications, as a way of storing a session value in JS.
+  * Implemented the Drag and Drop API [Dragula](https://bevacqua.github.io/dragula/) as an alternative route to finding a match. I did override the options.accepts method according to what my app needs. Dragula documentation is informative enough to get you going. Highly-recommended!
   * Gems: Execute_Sql, LolCommits, and Spicy-Proton
   * Used Spicy-Proton gem to spice up random messages in the Messenger
   
