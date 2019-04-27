@@ -95,3 +95,7 @@ This web application uses mainly Ruby on Rails with PostgreSQL as database. Of c
 ![Fluffily](Screen%20Shot%202019-04-27%20at%2012.05.15%20pm.png "Breeding Appointment")
 
 ![Fluffily](Screen%20Shot%202019-04-27%20at%209.09.30%20am.png "Breakup")
+
+BONUS: lolcommits
+
+![Fluffily](lolcommits.jpg "lolcommits")
