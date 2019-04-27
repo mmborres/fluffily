@@ -63,7 +63,7 @@ Kidding aside, let's go technical now.
     * Both dogs' status back to 'Available'
     * Dog can be deleted from the system
 
-![Fluffily Ready to Woof](Screen%20Shot%202019-04-26%20at%2010.09.34%20am.png "Ready to Woof?")
+![Fluffily Ready to Woof](Screen%20Shot%202019-04-27%20at%2011.56.43%20am.png "Ready to Woof?")
 
 ![Fluffily Notify](Screen%20Shot%202019-04-25%20at%204.32.08%20pm.png "Notification")
 
