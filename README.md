@@ -13,7 +13,7 @@ Please refer to Story Board below for information on how to use the app.
 First and Foremost, why a Dating App for Dogs?
 ------------
 
-Because a Hotdogs Database might sound trivial at this point. Or, not? Point is, I was pushing myself harder to make something complicated in a week. LOL.
+Because a Hotdogs Database might sound trivial at this point. Or, not? Point is, I was pushing myself harder to make something complicated in a week. LOL. Take note this is also my first ever Ruby on Rails project.
 
 Anyway, for someone who has not used dating apps ever, this project is a really cute attempt. Again, LOL. But yeah, who has done a full-functioning dating app in one week? Me! And, it's for dogs. =)
 
@@ -77,7 +77,7 @@ This web application uses mainly Ruby on Rails with PostgreSQL as database. Of c
   * Ruby on Rails: Logic/Back-end in Models and pre-display processing through Controllers
      * Utilised various Rails CRUD and direct SQL calls   
      * Custom Form Helpers
-     * (I did various kinds of calls, or approaches. Point is to use different Rails calls as practice. Direct SQL calls since it's cool to use vanilla SQL? Nah, it's more of a refresher for me, and I am enjoying it.)
+     * (I did various kinds of calls, or approaches. Point is to use different Rails calls as practice, as this is my first ever Rails project. Direct SQL calls since it's cool to use vanilla SQL? Nah, it's more of a refresher for me, and I am enjoying it.)
   * Javascript + Windows LocalStorage used in Notifications, as a way of storing a session value in JS.
   * Implemented the Drag and Drop API [Dragula](https://bevacqua.github.io/dragula/) as an alternative route to finding a match. I did override the options.accepts method according to what my app needs. Dragula documentation is informative enough to get you going. Highly-recommended!
   * Gems: Execute_Sql, LolCommits, and Spicy-Proton
