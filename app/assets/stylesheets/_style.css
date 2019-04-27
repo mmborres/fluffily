@@ -18,6 +18,8 @@ body {
   
   /* This is what makes the background image rescale based on its container's size */
   background-size: cover;
+
+  background-color: #033a1ccf;
 }
 
 

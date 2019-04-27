@@ -19,7 +19,7 @@
     <div class='wrapper'>
       <div id='left-rollbacks' class='container'>
         <% @matches.each do |d| %>
-        <div id="/woofs/<%= @request_id %>/<%= d.id %>/requestpage" >
+        <div id="/woofs/<%= @request_id %>/<%= d.id %>/requestpage" name="<%= d.name %>">
         <%if d.image.present? %><%= link_to image_tag(d.image, :class => 'thumb'), "/woofs/#{@request_id}/#{d.id}/show" %><% end %>
         <br><%= link_to d.name, "/woofs/#{@request_id}/#{d.id}/show" %> (<%= d.breed.capitalize %>)
         <br><span class="ptext">Status:</span> <%= link_to d.status, "/woofs/#{@request_id}/#{d.id}/show" %>
@@ -30,11 +30,7 @@
     </div>
 </div>
 Only one dog profile is progressed here. 
-      Put the dog profile back to the left 
-      <br>if you decided not to push through 
-      and put another dog profile in.
-      <br>Once done, click on the 'Ready to Woof!'
-      button below. <br>&nbsp;
+<br>Once decided on a dog, click on 'Ready to Woof!' button. <br>&nbsp;
 </div>
 <br>
 <div class="divflex">
@@ -85,9 +81,19 @@ dragula([$('left-rollbacks'), $('right-rollbacks')], {
   revertOnSpill: true,
   copy: false,
   accepts: function (el, target) {
+    const parentRight = document.getElementById("right-rollbacks");
+    const children = parentRight.childElementCount;
 
-    const children = document.getElementById("right-rollbacks").childElementCount;
     if (children>1) {
+        const parentLeft = document.getElementById("left-rollbacks");
+    
+        const ch1 = parentRight.firstChild;
+        el = ch1;
+        const ch2 = parentRight.childNodes[1];
+
+        parentRight.replaceChild(ch2, ch1);
+        parentLeft.appendChild(ch1);
+
         return false;
     } 
     return true;
