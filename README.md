@@ -88,6 +88,8 @@ This web application uses mainly Ruby on Rails with PostgreSQL as storage. Of co
   * Implement triggers from DB to reload page i.e., Messenger, Push Notifications
   * Google Maps for Woof-ups
 
-![Fluffily Mobile](Screenshot_2019-04-26-10-38-38.png "Mobile Version")
+![Fluffily](Screen%20Shot%202019-04-27%20at%2012.04.17%20pm.png "Post-Woof Options")
 
-![Fluffily Mobile](Screen%20Shot%202019-04-27%20at%209.09.30%20am.png "Breakup")
+![Fluffily](Screen%20Shot%202019-04-27%20at%2012.05.15%20pm.png "Breeding Appointment")
+
+![Fluffily](Screen%20Shot%202019-04-27%20at%209.09.30%20am.png "Breakup")
