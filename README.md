@@ -86,7 +86,7 @@ This web application uses mainly Ruby on Rails with PostgreSQL as database. Of c
 ### Wishlist ###
 
   * Replace background image with a non-stock photo. It's so cute I could not let it go =(
-  * Simplify Naviation
+  * Simplify Navigation
   * Implement triggers from DB to reload page i.e., Messenger, Push Notifications
   * Google Maps for Woof-ups
 
