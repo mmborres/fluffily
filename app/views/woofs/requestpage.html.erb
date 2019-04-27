@@ -35,5 +35,5 @@ value="Hi<%=@owner_name%>, I am hoping our dogs could have an initial meeting.">
 </p>
 
 <br><br>
-
+<%= link_to 'Back to Matches', "/woofs/#{@request_id}" %>
 <%= link_to 'Back to My Dogs', dogs_path %>

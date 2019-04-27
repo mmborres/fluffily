@@ -1,4 +1,5 @@
 class WoofsController < ApplicationController
+  include WoofsHelper
   
   def match
     @request_id = params[:id]
@@ -9,9 +10,14 @@ class WoofsController < ApplicationController
   end
 
   def changepref
-    @dog = Dog.find params[:id]
+    @request_id = params[:id]
+    @dog = Dog.find @request_id
     @booleanMalepref_sex = ( @dog.pref_sex.upcase == "MALE" )
     @booleanFemalepref_sex = ( @dog.pref_sex.upcase == "FEMALE" )
+    @breeds = getBreeds
+    @colors = getColors
+    @locations = getLocations
+#binding.pry
   end
 
   def updatepref

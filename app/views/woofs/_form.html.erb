@@ -2,7 +2,7 @@
 
 <% if display %>
     <br>
-    <h2>Looking for Dogs that are: </h2>
+    <h2>Search Among Registered '<i>Available</i>' Dogs: </h2>
 
     <%= f.label :pref_sex, "Preferred Sex" %><br>
     
@@ -12,13 +12,18 @@
     <%= label_tag('dog[pref_sex]', 'Female' ) %>
 
     <br><br><%= f.label :pref_breed, "Preferred Breed" %>
-    <br><%= f.text_field :pref_breed, :placeholder => 'Any', :size => '50' %>
+    <br> 
+    <%= select_tag "dog[pref_breed]", options_for_select(@breeds, @dog.pref_breed.capitalize), include_blank: "Any" %>
 
     <br><br><%= f.label :pref_color, "Preferred Color" %>
-    <br><%= f.text_field :pref_color, :placeholder => 'Any', :size => '50' %>
+    <br> 
+    <%= select_tag "dog[pref_color]", options_for_select(@colors, @dog.pref_color.capitalize), include_blank: "Any" %>
 
     <br><br><%= f.label :pref_location, "Preferred Location" %> (in Australia only)
-    <br><%= f.text_field :pref_location, :placeholder => 'Any', :size => '50' %>
+    <br> 
+    <%= select_tag "dog[pref_location]", options_for_select(@locations, @dog.pref_location.capitalize), include_blank: "Any" %>
+
+
 <% end %>
 
     <br><br>

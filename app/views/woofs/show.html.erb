@@ -6,7 +6,8 @@
 
 <p class="pLabel">
 <br>
-<%= @dog.name %> is a <%= @dog.sex %> <%= @dog.breed %> born on <%= @dog.dob.strftime("%B %d, %Y") %>. <br>
+<%= @dog.name %> is a <%= @dog.sex %> <%= @dog.breed %> born on <%= @dog.dob.strftime("%B %d, %Y") %>,  <br>
+and currently lives in <%= @dog.location %> part of Australia. <br>
 <% if @dog.sex == 'Female' %>She<% else %>He<% end %> is looking for dogs that are
 <br><%= @dog.pref_sex %>, and of <%= @dog.pref_breed %> breed and <%= @dog.pref_color %> color 
 <br>and lives in <%= @dog.pref_location %> part of Australia.
