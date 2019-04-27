@@ -78,7 +78,7 @@ This web application uses mainly Ruby on Rails with PostgreSQL as database. Of c
      * Utilised various Rails CRUD and direct SQL calls   
      * Custom Form Helpers
      * (I did various kinds of calls, or approaches. Point is to use different Rails calls as practice, as this is my first ever Rails project. Direct SQL calls since it's cool to use vanilla SQL? Nah, it's more of a refresher for me, and I am enjoying it.)
-  * Javascript + Windows LocalStorage used in Notifications, as a way of storing a session value in JS.
+  * Javascript + Windows LocalStorage used in Notifications, as a way of storing a session value in JS
   * Implemented the Drag and Drop API [Dragula](https://bevacqua.github.io/dragula/) as an alternative route to finding a match. I did override the options.accepts method according to what my app needs. Dragula documentation is informative enough to get you going. Highly-recommended!
   * Gems: Execute_Sql, LolCommits, and Spicy-Proton
   * Used Spicy-Proton gem to spice up random messages in the Messenger
