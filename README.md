@@ -15,7 +15,7 @@ First and Foremost, why a Dating App for Dogs?
 
 Because a Hotdogs Database might sound trivial at this point. Or, not? Point is, I was pushing myself harder to make something complicated in a week. LOL. Take note this is also my first ever Ruby on Rails project.
 
-Anyway, for someone who has not used dating apps ever, this project is a really cute attempt. Again, LOL. But yeah, who has done a full-functioning dating app in one week? Me! And, it's for dogs. =)
+Anyway, for someone who has not used dating apps ever, this project is a really cute attempt. Again, LOL. But yeah, who has done a fully-functioning dating app in one week? Me! And, it's for dogs. =)
 
 Kidding aside, let's go technical now.
 
@@ -54,7 +54,7 @@ Kidding aside, let's go technical now.
     * Breeding Appointment (ONLY if eligible)
     * Dogwalk Date
     * Breakup ---> option only be available after the initial Woof-up
-  * Breeding Appointment is set, new status: 'Breeading Appointment Reminder'
+  * Breeding Appointment is set, new status: 'Breeding Appointment Reminder'
   * Dogwalk Date is set, new status: 'Dogwalk Date Reminder'
   * Every sign-in there's a notification of the upcoming Woof-up
     * Any of the Dogs can EDIT or CANCEL the Woof-up meeting details. CANCEL sets the status both back to: 'Woof-up Expired' 
